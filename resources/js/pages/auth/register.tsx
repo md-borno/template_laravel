@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Spinner } from '@/components/ui/spinner';
-import { login } from '@/routes';
 import { store } from '@/routes/register';
 
 type Props = {
@@ -16,14 +15,14 @@ type Props = {
 export default function Register({ passwordRules }: Props) {
     return (
         <>
-            <Head title="Register" />
+            <Head title="Add User" />
             <Form
                 {...store.form()}
-                resetOnSuccess={['password', 'password_confirmation']}
+                resetOnSuccess
                 disableWhileProcessing
                 className="flex flex-col gap-6"
             >
-                {({ processing, errors }) => (
+                {({ processing, errors, recentlySuccessful }) => (
                     <>
                         <div className="grid gap-6">
                             <div className="grid gap-2">
@@ -97,14 +96,19 @@ export default function Register({ passwordRules }: Props) {
                                 data-test="register-user-button"
                             >
                                 {processing && <Spinner />}
-                                Create account
+                                Create user
                             </Button>
+
+                            {recentlySuccessful && (
+                                <p className="text-center text-sm text-green-600">
+                                    User created.
+                                </p>
+                            )}
                         </div>
 
                         <div className="text-center text-sm text-muted-foreground">
-                            Already have an account?{' '}
-                            <TextLink href={login()} tabIndex={6}>
-                                Log in
+                            <TextLink href="/dashboard" tabIndex={6}>
+                                Back to dashboard
                             </TextLink>
                         </div>
                     </>
@@ -115,6 +119,6 @@ export default function Register({ passwordRules }: Props) {
 }
 
 Register.layout = {
-    title: 'Create an account',
-    description: 'Enter your details below to create your account',
+    title: 'Add a new user',
+    description: 'Enter the details below to create an account',
 };

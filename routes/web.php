@@ -3,6 +3,7 @@
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 // Route::inertia('/', 'welcome')->name('home');
@@ -19,7 +20,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::put('/dashboard/home-page/title', [DashboardController::class, 'updateTitle'])
         ->name('dashboard.home-page.title.update');
-
+Route::get('/register', [UserController::class, 'create'])->name('register');
+Route::post('/register', [UserController::class, 'store'])->name('register.store');
 
     // Blog Management Routes
     Route::get('/dashboard/blog', [BlogController::class, 'manage']);

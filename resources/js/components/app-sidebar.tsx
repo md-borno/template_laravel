@@ -28,10 +28,14 @@ const mainNavItems: NavItem[] = [
         icon: Home,
     },
     {
-    title: 'Blog',
-    href: '/dashboard/blog',
-    icon: Newspaper,
-},
+        title: 'Blog',
+        href: '/dashboard/blog',
+        icon: Newspaper,
+    }, {
+        title: 'Add Users',
+        href: '/register',
+        icon: BookOpen,
+    },
 ];
 
 const footerNavItems: NavItem[] = [
@@ -45,6 +49,7 @@ const footerNavItems: NavItem[] = [
         href: 'https://laravel.com/docs/starter-kits#react',
         icon: BookOpen,
     },
+
 ];
 
 export function AppSidebar() {

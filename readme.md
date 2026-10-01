@@ -87,7 +87,7 @@ This creates a test user (`test@example.com`) and the home page title. You can a
 composer dev
 ```
 
-Then open **http://localhost:8000**
+Then open **http://localhost:8001**
 
 If `composer dev` does not work on your machine, run these in two separate terminals:
 
@@ -154,7 +154,7 @@ tests/                   Pest tests
 - **"no such table":** run `php artisan migrate`.
 - **Home page shows an error or empty title:** run `php artisan db:seed`.
 - **Changed `.env` but nothing happened:** run `php artisan config:clear`.
-- **Port 8000 already in use:** run `php artisan serve --port=8001` and update `APP_URL` in `.env`.
+- **Port 8001 already in use:** change `SERVER_PORT` and `APP_URL` in `.env` to the port you want to use.
 
 ---
 
