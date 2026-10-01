@@ -5,30 +5,38 @@ interface Post {
     id: number;
     title: string;
     body: string;
+    image: string | null;
 }
 
 export default function BlogPage({ posts }: { posts: Post[] }) {
     const [editId, setEditId] = useState<number | null>(null);
-    const { data, setData, post, put, reset, processing, errors } = useForm({
-        title: '',
-        body: '',
-    });
+    const [current, setCurrent] = useState<string | null>(null);
+    const [fileKey, setFileKey] = useState(0);
+
+    const { data, setData, post, reset, processing, errors } = useForm<{
+        title: string;
+        body: string;
+        image: File | null;
+    }>({ title: '', body: '', image: null });
+
+    const clear = () => {
+        reset();
+        setEditId(null);
+        setCurrent(null);
+        setFileKey((k) => k + 1);
+    };
 
     const submit = (e: React.FormEvent) => {
         e.preventDefault();
-        const options = {
-            onSuccess: () => {
-                reset();
-                setEditId(null);
-            },
-        };
-        if (editId) put(`/dashboard/blog/${editId}`, options);
-        else post('/dashboard/blog', options);
+        const url = editId ? `/dashboard/blog/${editId}` : '/dashboard/blog';
+        post(url, { forceFormData: true, onSuccess: clear });
     };
 
     const edit = (p: Post) => {
         setEditId(p.id);
-        setData({ title: p.title, body: p.body });
+        setCurrent(p.image);
+        setData({ title: p.title, body: p.body, image: null });
+        setFileKey((k) => k + 1);
     };
 
     return (
@@ -57,32 +65,46 @@ export default function BlogPage({ posts }: { posts: Post[] }) {
                     />
                     {errors.body && <p className="mt-1 text-sm text-red-500">{errors.body}</p>}
 
-                    <button
-                        type="submit"
-                        disabled={processing}
-                        className="mt-4 rounded-md bg-black px-4 py-2 text-white"
-                    >
-                        {editId ? 'Update Post' : 'Add Post'}
-                    </button>
-
-                    {editId && (
-                        <button
-                            type="button"
-                            onClick={() => {
-                                reset();
-                                setEditId(null);
-                            }}
-                            className="mt-4 ml-2 rounded-md border px-4 py-2"
-                        >
-                            Cancel
-                        </button>
+                    <label className="block mt-4 mb-2">Image</label>
+                    {current && (
+                        <img src={`/${current}`} alt="" className="mb-2 h-24 rounded-md" />
                     )}
+                    <input
+                        key={fileKey}
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => setData('image', e.target.files?.[0] ?? null)}
+                    />
+                    {errors.image && <p className="mt-1 text-sm text-red-500">{errors.image}</p>}
+
+                    <div>
+                        <button
+                            type="submit"
+                            disabled={processing}
+                            className="mt-4 rounded-md bg-black px-4 py-2 text-white"
+                        >
+                            {processing ? 'Saving...' : editId ? 'Update Post' : 'Add Post'}
+                        </button>
+
+                        {editId && (
+                            <button
+                                type="button"
+                                onClick={clear}
+                                className="mt-4 ml-2 rounded-md border px-4 py-2"
+                            >
+                                Cancel
+                            </button>
+                        )}
+                    </div>
                 </form>
 
                 <div className="mt-8 max-w-xl space-y-2">
                     {posts.map((p) => (
                         <div key={p.id} className="flex items-center justify-between rounded-md border p-3">
-                            <span>{p.title}</span>
+                            <div className="flex items-center gap-3">
+                                {p.image && <img src={`/${p.image}`} alt="" className="h-10 w-10 rounded object-cover" />}
+                                <span>{p.title}</span>
+                            </div>
                             <div className="space-x-3">
                                 <button onClick={() => edit(p)}>Edit</button>
                                 <button

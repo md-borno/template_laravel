@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{ $homePage->title }}</title>
+    <title>Company Name/ {{ $homePage->title }}</title>
 </head>
 <body>
-
+ <SiteNavbar />
     <h1>{{ $homePage->title }}</h1>
 
 </body>
