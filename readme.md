@@ -6,20 +6,20 @@ A company website built with **Laravel + Inertia + React**. It has a public home
 
 ## Tech Stack
 
-| Part | Technology |
-| --- | --- |
-| Backend | Laravel 13 (PHP 8.3+) |
-| Frontend | React 19 + TypeScript |
-| Bridge (backend ↔ frontend) | Inertia.js 3 |
-| Styling | Tailwind CSS 4 |
-| UI components | Radix UI + shadcn-style components (`resources/js/components/ui`), Lucide icons, Sonner toasts |
-| Build tool | Vite (via Vite+) with React Compiler |
-| Authentication | Laravel Fortify (login, register, password reset) |
-| Typed routes | Laravel Wayfinder (Laravel routes become TypeScript functions) |
-| Database | SQLite (default, no setup needed) |
-| Testing | Pest |
-| Code quality | Laravel Pint (PHP style), PHPStan / Larastan (PHP types), `vp check` + `tsc` (frontend) |
-| Dev tools | Laravel Boost, Laravel Pail (logs), Laravel Sail (Docker, optional) |
+| Part                        | Technology                                                                                     |
+| --------------------------- | ---------------------------------------------------------------------------------------------- |
+| Backend                     | Laravel 13 (PHP 8.3+)                                                                          |
+| Frontend                    | React 19 + TypeScript                                                                          |
+| Bridge (backend ↔ frontend) | Inertia.js 3                                                                                   |
+| Styling                     | Tailwind CSS 4                                                                                 |
+| UI components               | Radix UI + shadcn-style components (`resources/js/components/ui`), Lucide icons, Sonner toasts |
+| Build tool                  | Vite (via Vite+) with React Compiler                                                           |
+| Authentication              | Laravel Fortify (login, register, password reset)                                              |
+| Typed routes                | Laravel Wayfinder (Laravel routes become TypeScript functions)                                 |
+| Database                    | SQLite (default, no setup needed)                                                              |
+| Testing                     | Pest                                                                                           |
+| Code quality                | Laravel Pint (PHP style), PHPStan / Larastan (PHP types), `vp check` + `tsc` (frontend)        |
+| Dev tools                   | Laravel Boost, Laravel Pail (logs), Laravel Sail (Docker, optional)                            |
 
 ---
 
@@ -100,13 +100,13 @@ npm run dev           # terminal 2: Vite frontend
 
 ## Pages
 
-| URL | What it is |
-| --- | --- |
-| `/` | Public home page (Blade view) |
-| `/register`, `/login` | Create account / sign in |
-| `/dashboard` | Dashboard (login required) |
-| `/dashboard/home-page` | Edit the home page title (login required) |
-| `/settings/profile`, `/settings/security`, `/settings/appearance` | Account settings |
+| URL                                                               | What it is                                |
+| ----------------------------------------------------------------- | ----------------------------------------- |
+| `/`                                                               | Public home page (Blade view)             |
+| `/register`, `/login`                                             | Create account / sign in                  |
+| `/dashboard`                                                      | Dashboard (login required)                |
+| `/dashboard/home-page`                                            | Edit the home page title (login required) |
+| `/settings/profile`, `/settings/security`, `/settings/appearance` | Account settings                          |
 
 ---
 

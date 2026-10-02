@@ -47,35 +47,53 @@ export default function BlogPage({ posts }: { posts: Post[] }) {
                 <h1 className="text-2xl font-semibold">Blog Settings</h1>
 
                 <form onSubmit={submit} className="mt-6 max-w-xl">
-                    <label className="block mb-2">Title</label>
+                    <label className="mb-2 block">Title</label>
                     <input
                         type="text"
                         value={data.title}
                         onChange={(e) => setData('title', e.target.value)}
                         className="w-full rounded-md border px-3 py-2"
                     />
-                    {errors.title && <p className="mt-1 text-sm text-red-500">{errors.title}</p>}
+                    {errors.title && (
+                        <p className="mt-1 text-sm text-red-500">
+                            {errors.title}
+                        </p>
+                    )}
 
-                    <label className="block mt-4 mb-2">Body</label>
+                    <label className="mt-4 mb-2 block">Body</label>
                     <textarea
                         rows={6}
                         value={data.body}
                         onChange={(e) => setData('body', e.target.value)}
                         className="w-full rounded-md border px-3 py-2"
                     />
-                    {errors.body && <p className="mt-1 text-sm text-red-500">{errors.body}</p>}
+                    {errors.body && (
+                        <p className="mt-1 text-sm text-red-500">
+                            {errors.body}
+                        </p>
+                    )}
 
-                    <label className="block mt-4 mb-2">Image</label>
+                    <label className="mt-4 mb-2 block">Image</label>
                     {current && (
-                        <img src={`/${current}`} alt="" className="mb-2 h-24 rounded-md" />
+                        <img
+                            src={`/${current}`}
+                            alt=""
+                            className="mb-2 h-24 rounded-md"
+                        />
                     )}
                     <input
                         key={fileKey}
                         type="file"
                         accept="image/*"
-                        onChange={(e) => setData('image', e.target.files?.[0] ?? null)}
+                        onChange={(e) =>
+                            setData('image', e.target.files?.[0] ?? null)
+                        }
                     />
-                    {errors.image && <p className="mt-1 text-sm text-red-500">{errors.image}</p>}
+                    {errors.image && (
+                        <p className="mt-1 text-sm text-red-500">
+                            {errors.image}
+                        </p>
+                    )}
 
                     <div>
                         <button
@@ -83,7 +101,11 @@ export default function BlogPage({ posts }: { posts: Post[] }) {
                             disabled={processing}
                             className="mt-4 rounded-md bg-black px-4 py-2 text-white"
                         >
-                            {processing ? 'Saving...' : editId ? 'Update Post' : 'Add Post'}
+                            {processing
+                                ? 'Saving...'
+                                : editId
+                                  ? 'Update Post'
+                                  : 'Add Post'}
                         </button>
 
                         {editId && (
@@ -100,9 +122,18 @@ export default function BlogPage({ posts }: { posts: Post[] }) {
 
                 <div className="mt-8 max-w-xl space-y-2">
                     {posts.map((p) => (
-                        <div key={p.id} className="flex items-center justify-between rounded-md border p-3">
+                        <div
+                            key={p.id}
+                            className="flex items-center justify-between rounded-md border p-3"
+                        >
                             <div className="flex items-center gap-3">
-                                {p.image && <img src={`/${p.image}`} alt="" className="h-10 w-10 rounded object-cover" />}
+                                {p.image && (
+                                    <img
+                                        src={`/${p.image}`}
+                                        alt=""
+                                        className="h-10 w-10 rounded object-cover"
+                                    />
+                                )}
                                 <span>{p.title}</span>
                             </div>
                             <div className="space-x-3">

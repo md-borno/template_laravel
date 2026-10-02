@@ -7,7 +7,15 @@ interface User {
 }
 
 export default function RegisterUser({ users }: { users: User[] }) {
-    const { data, setData, post, reset, processing, errors, recentlySuccessful } = useForm({
+    const {
+        data,
+        setData,
+        post,
+        reset,
+        processing,
+        errors,
+        recentlySuccessful,
+    } = useForm({
         name: '',
         email: '',
         password: '',
@@ -33,45 +41,61 @@ export default function RegisterUser({ users }: { users: User[] }) {
                     {users.map((u) => (
                         <div key={u.id} className="rounded-md border p-3">
                             <div>{u.name}</div>
-                            <div className="text-sm text-gray-500">{u.email}</div>
+                            <div className="text-sm text-gray-500">
+                                {u.email}
+                            </div>
                         </div>
                     ))}
                 </div>
                 <h1 className="text-2xl font-semibold">Add User</h1>
 
                 <form onSubmit={submit} className="mt-6 max-w-xl">
-                    <label className="block mb-2">Name</label>
+                    <label className="mb-2 block">Name</label>
                     <input
                         type="text"
                         value={data.name}
                         onChange={(e) => setData('name', e.target.value)}
                         className="w-full rounded-md border px-3 py-2"
                     />
-                    {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name}</p>}
+                    {errors.name && (
+                        <p className="mt-1 text-sm text-red-500">
+                            {errors.name}
+                        </p>
+                    )}
 
-                    <label className="block mt-4 mb-2">Email</label>
+                    <label className="mt-4 mb-2 block">Email</label>
                     <input
                         type="email"
                         value={data.email}
                         onChange={(e) => setData('email', e.target.value)}
                         className="w-full rounded-md border px-3 py-2"
                     />
-                    {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
+                    {errors.email && (
+                        <p className="mt-1 text-sm text-red-500">
+                            {errors.email}
+                        </p>
+                    )}
 
-                    <label className="block mt-4 mb-2">Password</label>
+                    <label className="mt-4 mb-2 block">Password</label>
                     <input
                         type="password"
                         value={data.password}
                         onChange={(e) => setData('password', e.target.value)}
                         className="w-full rounded-md border px-3 py-2"
                     />
-                    {errors.password && <p className="mt-1 text-sm text-red-500">{errors.password}</p>}
+                    {errors.password && (
+                        <p className="mt-1 text-sm text-red-500">
+                            {errors.password}
+                        </p>
+                    )}
 
-                    <label className="block mt-4 mb-2">Confirm Password</label>
+                    <label className="mt-4 mb-2 block">Confirm Password</label>
                     <input
                         type="password"
                         value={data.password_confirmation}
-                        onChange={(e) => setData('password_confirmation', e.target.value)}
+                        onChange={(e) =>
+                            setData('password_confirmation', e.target.value)
+                        }
                         className="w-full rounded-md border px-3 py-2"
                     />
 
@@ -84,11 +108,11 @@ export default function RegisterUser({ users }: { users: User[] }) {
                     </button>
 
                     {recentlySuccessful && (
-                        <p className="mt-3 text-sm text-green-600">User created.</p>
+                        <p className="mt-3 text-sm text-green-600">
+                            User created.
+                        </p>
                     )}
                 </form>
-
-
             </div>
         </>
     );

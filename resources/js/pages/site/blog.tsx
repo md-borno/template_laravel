@@ -21,7 +21,11 @@ export default function Blog({ posts }: { posts: Post[] }) {
                     <article key={p.id} className="mb-8">
                         <h2 className="text-xl font-semibold">{p.title}</h2>
                         {p.image && (
-                            <img src={`/${p.image}`} alt={p.title} className="mt-3 w-full rounded-md" />
+                            <img
+                                src={`/${p.image}`}
+                                alt={p.title}
+                                className="mt-3 w-full rounded-md"
+                            />
                         )}
                         <p className="mt-2 whitespace-pre-line">{p.body}</p>
                     </article>

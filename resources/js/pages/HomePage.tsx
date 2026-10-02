@@ -22,21 +22,15 @@ export default function HomePage({ homePage }: Props) {
             <Head title="Home Page" />
 
             <div className="p-6">
-                <h1 className="text-2xl font-semibold">
-                    Home Page Settings
-                </h1>
+                <h1 className="text-2xl font-semibold">Home Page Settings</h1>
 
                 <form onSubmit={submit} className="mt-6 max-w-xl">
-                    <label className="block mb-2">
-                        Home Page Title
-                    </label>
+                    <label className="mb-2 block">Home Page Title</label>
 
                     <input
                         type="text"
                         value={data.title}
-                        onChange={(e) =>
-                            setData('title', e.target.value)
-                        }
+                        onChange={(e) => setData('title', e.target.value)}
                         className="w-full rounded-md border px-3 py-2"
                     />
 

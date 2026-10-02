@@ -1,5 +1,11 @@
 import { Link } from '@inertiajs/react';
-import { BookOpen, FolderGit2, Home, LayoutGrid, Newspaper } from 'lucide-react';
+import {
+    BookOpen,
+    FolderGit2,
+    Home,
+    LayoutGrid,
+    Newspaper,
+} from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
@@ -31,7 +37,8 @@ const mainNavItems: NavItem[] = [
         title: 'Blog',
         href: '/dashboard/blog',
         icon: Newspaper,
-    }, {
+    },
+    {
         title: 'Add Users',
         href: '/register',
         icon: BookOpen,
@@ -49,7 +56,6 @@ const footerNavItems: NavItem[] = [
         href: 'https://laravel.com/docs/starter-kits#react',
         icon: BookOpen,
     },
-
 ];
 
 export function AppSidebar() {

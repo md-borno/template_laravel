@@ -77,8 +77,12 @@ export default function Dashboard({ visits, recent }: Props) {
                             key={c.label}
                             className="rounded-xl border border-sidebar-border/70 p-6 dark:border-sidebar-border"
                         >
-                            <div className="text-sm text-muted-foreground">{c.label}</div>
-                            <div className="mt-2 text-4xl font-bold">{c.value}</div>
+                            <div className="text-sm text-muted-foreground">
+                                {c.label}
+                            </div>
+                            <div className="mt-2 text-4xl font-bold">
+                                {c.value}
+                            </div>
                         </div>
                     ))}
                 </div>
@@ -101,7 +105,9 @@ export default function Dashboard({ visits, recent }: Props) {
                                     className="border-b border-sidebar-border/70 last:border-0 dark:border-sidebar-border"
                                 >
                                     <td className="px-4 py-3">
-                                        {new Date(v.created_at).toLocaleString()}
+                                        {new Date(
+                                            v.created_at,
+                                        ).toLocaleString()}
                                     </td>
                                     <td className="px-4 py-3">{v.path}</td>
                                     <td className="px-4 py-3">{v.ip}</td>
@@ -110,7 +116,10 @@ export default function Dashboard({ visits, recent }: Props) {
 
                             {recent.length === 0 && (
                                 <tr>
-                                    <td colSpan={3} className="px-4 py-6 text-center text-muted-foreground">
+                                    <td
+                                        colSpan={3}
+                                        className="px-4 py-6 text-center text-muted-foreground"
+                                    >
                                         No visits yet.
                                     </td>
                                 </tr>
