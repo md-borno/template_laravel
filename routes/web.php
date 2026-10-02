@@ -5,13 +5,15 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\TrackVisit;
 
 // Route::inertia('/', 'welcome')->name('home');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::inertia('dashboard', 'dashboard')->name('dashboard');
+    // Route::inertia('dashboard', 'dashboard')->name('dashboard');
+    Route::get('dashboard', [DashboardController::class, 'show'])->name('dashboard');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -20,8 +22,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::put('/dashboard/home-page/title', [DashboardController::class, 'updateTitle'])
         ->name('dashboard.home-page.title.update');
-Route::get('/register', [UserController::class, 'create'])->name('register');
-Route::post('/register', [UserController::class, 'store'])->name('register.store');
+    Route::get('/register', [UserController::class, 'create'])->name('register');
+    Route::post('/register', [UserController::class, 'store'])->name('register.store');
 
     // Blog Management Routes
     Route::get('/dashboard/blog', [BlogController::class, 'manage']);
@@ -30,4 +32,9 @@ Route::post('/register', [UserController::class, 'store'])->name('register.store
     Route::delete('/dashboard/blog/{post}', [BlogController::class, 'destroy']);
 });
 
-require __DIR__ . '/settings.php';
+Route::middleware(TrackVisit::class)->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+});
+
+require __DIR__.'/settings.php';
