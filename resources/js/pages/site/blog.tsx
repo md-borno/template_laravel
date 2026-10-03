@@ -14,7 +14,7 @@ export default function Blog({ posts }: { posts: Post[] }) {
             <Head title="Blog" />
             <SiteNavbar />
 
-            <main className="mx-auto max-w-2xl p-6">
+            <main className="mx-auto max-w-2xl p-6 mt-20">
                 <h1 className="mb-6 text-3xl font-bold">Blog</h1>
 
                 {posts.map((p) => (
