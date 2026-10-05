@@ -1,6 +1,8 @@
 import { Head } from '@inertiajs/react';
 import SiteNavbar from '@/components/site-navbar';
 import SiteFooter from '@/components/site-footer';
+import SiteBanner from '@/components/site-banner';
+import SiteCard from '@/components/site-card';
 
 export default function Home({
     homePage,
@@ -43,6 +45,8 @@ export default function Home({
     return (
         <>
             <SiteNavbar />
+            <SiteBanner/>
+            <SiteCard/>
 
             <main className="mx-auto max-w-6xl px-6 pt-32 pb-20">
                 {/* Hero */}
