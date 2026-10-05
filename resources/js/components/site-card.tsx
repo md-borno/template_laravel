@@ -29,7 +29,9 @@ export default function SiteCard() {
         const el = trackRef.current;
         if (!el) return;
         const n = cards.length;
-        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const reduce = window.matchMedia(
+            '(prefers-reduced-motion: reduce)',
+        ).matches;
 
         let lefts: number[] = [];
         let cardW = 0;
@@ -53,7 +55,10 @@ export default function SiteCard() {
             nodes.current.forEach((node, i) => {
                 if (!node) return;
                 const d = Math.abs(lefts[i] + cardW / 2 - vc) / pitch;
-                const s = 1 - 0.2 * Math.min(d, 1) - 0.18 * Math.min(Math.max(d - 1, 0), 1); // centre = 1, next = .8, then .62
+                const s =
+                    1 -
+                    0.2 * Math.min(d, 1) -
+                    0.18 * Math.min(Math.max(d - 1, 0), 1); // centre = 1, next = .8, then .62
                 node.style.transform = `scale(${s.toFixed(3)})`;
                 node.style.zIndex = String(100 - Math.round(d * 10));
             });
@@ -119,7 +124,9 @@ export default function SiteCard() {
         el.classList.add('pc-dragging');
     };
     const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-        if (drag.current.on) trackRef.current!.scrollLeft = drag.current.left - (e.clientX - drag.current.x);
+        if (drag.current.on)
+            trackRef.current!.scrollLeft =
+                drag.current.left - (e.clientX - drag.current.x);
     };
     const endDrag = () => {
         if (!drag.current.on) return;
@@ -135,7 +142,9 @@ export default function SiteCard() {
             <div
                 ref={trackRef}
                 className="pc-track"
-                onPointerEnter={(e) => e.pointerType === 'mouse' && (hover.current = true)}
+                onPointerEnter={(e) =>
+                    e.pointerType === 'mouse' && (hover.current = true)
+                }
                 onPointerLeave={() => (hover.current = false)}
                 onPointerDown={onPointerDown}
                 onPointerMove={onPointerMove}
@@ -160,7 +169,11 @@ export default function SiteCard() {
                                 <div className="pc-img" />
                                 <div className="pc-info">
                                     <p className="pc-brand">
-                                        {c.badge && <span className="pc-badge">{c.badge}</span>}
+                                        {c.badge && (
+                                            <span className="pc-badge">
+                                                {c.badge}
+                                            </span>
+                                        )}
                                         {c.brand}
                                     </p>
                                     <h3 className="pc-name">{c.name}</h3>

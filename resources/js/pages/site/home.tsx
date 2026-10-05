@@ -4,11 +4,7 @@ import SiteFooter from '@/components/site-footer';
 import SiteBanner from '@/components/site-banner';
 import SiteCard from '@/components/site-card';
 
-export default function Home({
-    homePage,
-}: {
-    homePage: { title: string };
-}) {
+export default function Home({ homePage }: { homePage: { title: string } }) {
     const fakeItems = [
         {
             title: 'Modern Digital Solutions',
@@ -45,13 +41,13 @@ export default function Home({
     return (
         <>
             <SiteNavbar />
-            <SiteBanner/>
-            <SiteCard/>
+            <SiteBanner />
+            <SiteCard />
 
             <main className="mx-auto max-w-6xl px-6 pt-32 pb-20">
                 {/* Hero */}
-                <section className="min-h-[70vh] flex flex-col justify-center">
-                    <span className="mb-4 text-sm font-semibold uppercase tracking-widest text-gray-500">
+                <section className="flex min-h-[70vh] flex-col justify-center">
+                    <span className="mb-4 text-sm font-semibold tracking-widest text-gray-500 uppercase">
                         Welcome
                     </span>
 
@@ -60,8 +56,8 @@ export default function Home({
                     </h1>
 
                     <p className="mt-6 max-w-2xl text-lg leading-8 text-gray-600">
-                        We create simple, modern, and reliable digital
-                        solutions that help businesses grow and work smarter.
+                        We create simple, modern, and reliable digital solutions
+                        that help businesses grow and work smarter.
                     </p>
 
                     <div className="mt-8 flex gap-4">
@@ -77,7 +73,7 @@ export default function Home({
 
                 {/* About */}
                 <section className="min-h-[70vh] py-24">
-                    <p className="text-sm font-semibold uppercase tracking-widest text-gray-500">
+                    <p className="text-sm font-semibold tracking-widest text-gray-500 uppercase">
                         About Us
                     </p>
 
@@ -95,7 +91,7 @@ export default function Home({
 
                 {/* Features */}
                 <section className="py-24">
-                    <p className="text-sm font-semibold uppercase tracking-widest text-gray-500">
+                    <p className="text-sm font-semibold tracking-widest text-gray-500 uppercase">
                         What We Do
                     </p>
 
@@ -128,7 +124,7 @@ export default function Home({
                 {/* Large fake section */}
                 <section className="min-h-[80vh] py-24">
                     <div className="rounded-[2rem] bg-gray-100 p-10 md:p-20">
-                        <p className="text-sm font-semibold uppercase tracking-widest text-gray-500">
+                        <p className="text-sm font-semibold tracking-widest text-gray-500 uppercase">
                             Our Approach
                         </p>
 
@@ -138,8 +134,8 @@ export default function Home({
 
                         <p className="mt-8 max-w-2xl text-lg leading-8 text-gray-600">
                             We believe great products do not need to be
-                            complicated. Every feature should have a purpose
-                            and every interaction should feel natural.
+                            complicated. Every feature should have a purpose and
+                            every interaction should feel natural.
                         </p>
 
                         <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -168,9 +164,9 @@ export default function Home({
                 </section>
 
                 {/* CTA */}
-                <section className="min-h-[60vh] flex items-center justify-center py-24 text-center">
+                <section className="flex min-h-[60vh] items-center justify-center py-24 text-center">
                     <div>
-                        <p className="text-sm font-semibold uppercase tracking-widest text-gray-500">
+                        <p className="text-sm font-semibold tracking-widest text-gray-500 uppercase">
                             Let's Work Together
                         </p>
 

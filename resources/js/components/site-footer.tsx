@@ -23,7 +23,9 @@ export default function SiteFooter() {
         const text = textRef.current;
         if (!el || !svg || !text) return;
 
-        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const reduced = window.matchMedia(
+            '(prefers-reduced-motion: reduce)',
+        ).matches;
         let frame = 0;
 
         // size the name so it spans the whole width, edge to edge
@@ -34,17 +36,23 @@ export default function SiteFooter() {
             const fs = (100 * FILL) / len;
             text.setAttribute('font-size', String(fs));
             baseline.current = fs * 0.74; // roughly the cap height
-            svg.setAttribute('viewBox', `0 0 1000 ${baseline.current + fs * 0.04}`);
+            svg.setAttribute(
+                'viewBox',
+                `0 0 1000 ${baseline.current + fs * 0.04}`,
+            );
         };
 
         const update = () => {
             frame = 0;
             const vh = window.innerHeight;
-            const remaining = document.documentElement.scrollHeight - vh - window.scrollY;
+            const remaining =
+                document.documentElement.scrollHeight - vh - window.scrollY;
             const span = Math.min(el.offsetHeight, vh);
 
             // 0 = footer just starting to appear, 1 = scrolled to the very bottom
-            const p = reduced ? 1 : 1 - Math.min(Math.max(remaining / span, 0), 1);
+            const p = reduced
+                ? 1
+                : 1 - Math.min(Math.max(remaining / span, 0), 1);
             const eased = p * p * (3 - 2 * p); // smoothstep: flattens slowly near the bottom
             const curve = MAX_CURVE * (1 - eased);
 
@@ -56,7 +64,10 @@ export default function SiteFooter() {
                 const width = svg.getBoundingClientRect().width || 1000;
                 const rise = Math.min(curve * (1000 / width), 140);
                 const b = baseline.current;
-                arc.setAttribute('d', `M 0 ${b} Q 500 ${b - 2 * rise} 1000 ${b}`);
+                arc.setAttribute(
+                    'd',
+                    `M 0 ${b} Q 500 ${b - 2 * rise} 1000 ${b}`,
+                );
             }
         };
 
@@ -83,7 +94,9 @@ export default function SiteFooter() {
         <footer
             ref={footerRef}
             className="relative overflow-hidden bg-[#f1f1ed] text-[#1b1a19] will-change-[border-radius]"
-            style={{ borderRadius: `50% 50% 0 0 / ${MAX_CURVE}px ${MAX_CURVE}px 0 0` }}
+            style={{
+                borderRadius: `50% 50% 0 0 / ${MAX_CURVE}px ${MAX_CURVE}px 0 0`,
+            }}
         >
             {/* the name: full width, bends with the footer curve, straight at the bottom */}
             <svg
@@ -94,10 +107,25 @@ export default function SiteFooter() {
                 style={{ marginTop: MAX_CURVE + 8 }}
             >
                 <defs>
-                    <path ref={arcRef} id="footer-name-arc" d="M 0 240 Q 500 10 1000 240" fill="none" />
+                    <path
+                        ref={arcRef}
+                        id="footer-name-arc"
+                        d="M 0 240 Q 500 10 1000 240"
+                        fill="none"
+                    />
                 </defs>
-                <text ref={textRef} fill="currentColor" fontSize="300" fontWeight="800" style={{ fontFamily: 'inherit', letterSpacing: '-0.03em' }}>
-                    <textPath href="#footer-name-arc" startOffset="50%" textAnchor="middle">
+                <text
+                    ref={textRef}
+                    fill="currentColor"
+                    fontSize="300"
+                    fontWeight="800"
+                    style={{ fontFamily: 'inherit', letterSpacing: '-0.03em' }}
+                >
+                    <textPath
+                        href="#footer-name-arc"
+                        startOffset="50%"
+                        textAnchor="middle"
+                    >
                         {NAME}
                     </textPath>
                 </text>
@@ -106,7 +134,10 @@ export default function SiteFooter() {
             {/* bottom row */}
             <div className="mx-auto max-w-[1400px] px-6 pb-5 sm:px-10">
                 <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-[#dcdcd6] pt-5 text-sm opacity-70 sm:flex-row">
-                    <p>© {new Date().getFullYear()} {NAME}. All rights reserved.</p>
+                    <p>
+                        © {new Date().getFullYear()} {NAME}. All rights
+                        reserved.
+                    </p>
                     <div className="flex gap-6">
                         <Link href="/privacy" className="hover:underline">
                             Privacy
