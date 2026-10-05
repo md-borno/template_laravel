@@ -323,7 +323,7 @@ export default function SiteBanner() {
                         className="bc-title absolute top-1/2 -translate-y-1/2 font-extrabold tracking-wide whitespace-nowrap text-white"
                         aria-label={TITLE}
                     >
-                        {[...TITLE].map((ch, i) => (
+                        {characters.map(({ segment: ch }, i) => (
                             <span
                                 key={i}
                                 aria-hidden="true"

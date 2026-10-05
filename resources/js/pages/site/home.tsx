@@ -1,4 +1,3 @@
-import { Head } from '@inertiajs/react';
 import SiteNavbar from '@/components/site-navbar';
 import SiteFooter from '@/components/site-footer';
 import SiteBanner from '@/components/site-banner';

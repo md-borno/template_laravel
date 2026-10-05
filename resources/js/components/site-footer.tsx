@@ -77,7 +77,7 @@ export default function SiteFooter() {
 
         fit();
         update();
-        document.fonts?.ready.then(() => {
+        void document.fonts?.ready.then(() => {
             fit();
             update();
         });
