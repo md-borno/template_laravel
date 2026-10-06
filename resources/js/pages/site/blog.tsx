@@ -1,5 +1,6 @@
 import { Head } from '@inertiajs/react';
 import SiteNavbar from '@/components/site-navbar';
+import { resolveImageUrl } from '@/lib/image-url';
 
 interface Post {
     id: number;
@@ -21,11 +22,13 @@ export default function Blog({ posts }: { posts: Post[] }) {
                     <article key={p.id} className="mb-8">
                         <h2 className="text-xl font-semibold">{p.title}</h2>
                         {p.image && (
-                            <img
-                                src={`/${p.image}`}
-                                alt={p.title}
-                                className="mt-3 w-full rounded-md"
-                            />
+                           <img
+    src={resolveImageUrl(p.image)}
+    alt={p.title}
+    referrerPolicy="no-referrer"
+    loading="lazy"
+    className="mt-3 w-full rounded-md"
+/>
                         )}
                         <p className="mt-2 whitespace-pre-line">{p.body}</p>
                     </article>

@@ -14,7 +14,7 @@ const DOTS = [
     '#26093d',
     '#16063a',
 ];
-
+const characters = TITLE.split('').map(char => ({ segment: char }));
 const delay = (s: number): CSSProperties => ({ animationDelay: `${s}s` });
 
 // isometric keyboard keys
