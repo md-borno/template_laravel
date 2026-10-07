@@ -11,28 +11,44 @@ interface Post {
 
 export default function BlogPage({ posts }: { posts: Post[] }) {
     const [editId, setEditId] = useState<number | null>(null);
+const [existingImage, setExistingImage] = useState<string | null>(null);
+const [preview, setPreview] = useState<string | null>(null);
 
-    const { data, setData, post, reset, processing, errors } = useForm({
-        title: '',
-        body: '',
-        image: '',
-    });
+const { data, setData, post, reset, processing, errors } = useForm<{
+    title: string;
+    body: string;
+    image: File | null;
+}>({
+    title: '',
+    body: '',
+    image: null,
+});
 
-    const clear = () => {
-        reset();
-        setEditId(null);
-    };
+const clear = () => {
+    reset();
+    setEditId(null);
+    setExistingImage(null);
+    setPreview(null);
+};
 
-    const submit = (e: React.FormEvent) => {
-        e.preventDefault();
-        const url = editId ? `/dashboard/blog/${editId}` : '/dashboard/blog';
-        post(url, { onSuccess: clear });
-    };
+const submit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const url = editId ? `/dashboard/blog/${editId}` : '/dashboard/blog';
+    post(url, { forceFormData: true, onSuccess: clear });
+};
 
-    const edit = (p: Post) => {
-        setEditId(p.id);
-        setData({ title: p.title, body: p.body, image: p.image ?? '' });
-    };
+const edit = (p: Post) => {
+    setEditId(p.id);
+    setExistingImage(p.image);
+    setPreview(null);
+    setData({ title: p.title, body: p.body, image: null });
+};
+
+const onFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0] ?? null;
+    setData('image', file);
+    setPreview(file ? URL.createObjectURL(file) : null);
+};
 
     return (
         <>
@@ -64,27 +80,24 @@ export default function BlogPage({ posts }: { posts: Post[] }) {
                         <p className="mt-1 text-sm text-red-500">{errors.body}</p>
                     )}
 
-                    <label className="mt-4 mb-2 block">
-                        Image link (Google Drive, public)
-                    </label>
-                    <input
-                        type="url"
-                        placeholder="https://drive.google.com/file/d/.../view?usp=sharing"
-                        value={data.image}
-                        onChange={(e) => setData('image', e.target.value)}
-                        className="w-full rounded-md border px-3 py-2"
-                    />
-                    {data.image && (
-                        <img
-                            src={resolveImageUrl(data.image)}
-                            alt=""
-                            referrerPolicy="no-referrer"
-                            className="mt-2 h-24 rounded-md"
-                        />
-                    )}
-                    {errors.image && (
-                        <p className="mt-1 text-sm text-red-500">{errors.image}</p>
-                    )}
+                  <label className="mt-4 mb-2 block">Image</label>
+<input
+    type="file"
+    accept="image/*"
+    onChange={onFile}
+    className="w-full rounded-md border px-3 py-2"
+/>
+{(preview || existingImage) && (
+    <img
+        src={preview ?? resolveImageUrl(existingImage!)}
+        alt=""
+        referrerPolicy="no-referrer"
+        className="mt-2 h-24 rounded-md"
+    />
+)}
+{errors.image && (
+    <p className="mt-1 text-sm text-red-500">{errors.image}</p>
+)}
 
                     <div>
                         <button
