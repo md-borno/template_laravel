@@ -43,6 +43,11 @@ const mainNavItems: NavItem[] = [
         href: '/register',
         icon: BookOpen,
     },
+    {
+        title: 'User Message',
+        href: '/user-messages',
+        icon: BookOpen,
+    },
 ];
 
 const footerNavItems: NavItem[] = [

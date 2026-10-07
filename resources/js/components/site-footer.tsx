@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react';
 const MAX_CURVE = 160;
 
 /** The name shown in the footer. */
-const NAME = 'company';
+const NAME = 'CODLEXA';
 
 /** Width the name should fill, in SVG units (the SVG box is 1000 wide = full footer width). */
 const FILL = 1012;

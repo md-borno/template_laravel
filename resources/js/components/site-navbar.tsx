@@ -4,16 +4,16 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react';
 type NavItem = { label: string; href: string; badge?: string; count?: number };
 
 const products: NavItem[] = [
+    // home, about us, services, Portfolio, Blog, Contact, 
     { label: 'Home', href: '/' },
     { label: 'Blog', href: '/blog' },
     { label: 'Services', href: '/services', badge: 'NEW' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'Contact', href: '/contact-us' },
 ];
 
 const explore: NavItem[] = [
-    { label: 'Projects', href: '/projects', count: 12 },
-    { label: 'About', href: '/about' },
-    { label: 'Pricing', href: '/pricing' },
+    { label: 'Portfolio', href: '/portfolio', count: 12 },
+    { label: 'About Us', href: '/about-us' },
 ];
 
 const stagger = (i: number) => ({ '--i': i }) as CSSProperties;
@@ -87,7 +87,7 @@ export default function SiteNavbar() {
                             href="/"
                             className="text-[26px] leading-none font-extrabold tracking-tighter"
                         >
-                            My Company
+                            CODLEXA
                         </Link>
 
                         <div className="flex items-center gap-1 justify-self-end">
@@ -112,7 +112,7 @@ export default function SiteNavbar() {
                                                 className="mn-kicker mn-reveal mb-5 uppercase"
                                                 style={stagger(0)}
                                             >
-                                                Our company
+                                                CODLEXA
                                             </p>
                                             {products.map((item, i) => (
                                                 <MenuLink
