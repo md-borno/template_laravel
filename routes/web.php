@@ -10,25 +10,21 @@ use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\TrackVisit;
 
+// Public Website Routes (Tracked automatically by TrackVisit middleware)
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/blog', [BlogController::class, 'index'])->name('blog');
-Route::get('/blog/{post}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('/services', [ServicesController::class, 'index'])->name('services');
-Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact-us');
-Route::post('/contact-us', [ContactUsController::class, 'store'])->name('contact-us.store');
 Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio');
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');
 Route::get('/career', [CareerController::class, 'index'])->name('career');
 Route::get('/careers', fn() => redirect('/career'));
+Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+Route::get('/blog/{post}', [BlogController::class, 'show'])->name('blog.show');
+Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact-us');
+Route::post('/contact-us', [ContactUsController::class, 'store'])->name('contact-us.store');
 
-
-// 
-Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact.index');
-Route::post('/contact-us', [ContactUsController::class, 'store'])->name('contact.store');
+// Authenticated Admin Dashboard Routes
 Route::middleware(['auth', 'verified'])->group(function () {
-    // Route::inertia('dashboard', 'dashboard')->name('dashboard');
     Route::get('dashboard', [DashboardController::class, 'show'])->name('dashboard');
 });
 
@@ -48,11 +44,6 @@ Route::middleware(['auth'])->group(function () {
 
     // Contact Us Management Routes
     Route::get('/user-messages', [ContactUsController::class, 'list'])->name('messages.list');
-});
-
-Route::middleware(TrackVisit::class)->group(function () {
-    Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 });
 
 require __DIR__.'/settings.php';
