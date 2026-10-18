@@ -16,6 +16,14 @@ class BlogController extends Controller
         return Inertia::render('site/blog', ['posts' => Blog::latest()->get()]);
     }
 
+    public function show(Blog $post)
+    {
+        return Inertia::render('site/blog-detail', [
+            'post' => $post,
+            'relatedPosts' => Blog::where('id', '!=', $post->id)->latest()->take(3)->get(),
+        ]);
+    }
+
     public function manage()
     {
         return Inertia::render('BlogPage', ['posts' => Blog::latest()->get()]);

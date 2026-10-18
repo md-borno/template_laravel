@@ -22,28 +22,31 @@ export default function ContactUs() {
     };
 
     const inputClass =
-        'w-full rounded-lg border border-gray-200 bg-gray-50/50 px-4 py-3 text-sm text-gray-900 transition focus:border-blue-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20';
-    const errorClass = 'mt-1.5 text-xs font-medium text-rose-500';
+        'w-full rounded-xl border border-[#DCE4F0] bg-white px-4 py-3.5 text-sm text-[#0F172A] placeholder:text-[#94A3B8] transition focus:border-[#004DEB] focus:outline-none focus:ring-2 focus:ring-[#004DEB]/20';
+    const errorClass = 'mt-1.5 text-xs font-semibold text-[#DC2626]';
 
     return (
-        <div className="flex min-h-screen flex-col bg-gray-50/60">
+        <div className="flex min-h-screen flex-col bg-[#F8FAFC]">
             <Head title="Contact Us" />
             <SiteNavbar />
 
-            <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-16 sm:px-6 lg:px-8 pt-20">
+            <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-16 sm:px-6 lg:px-8 pt-24">
                 {/* Header Banner */}
                 <div className="mx-auto mb-14 max-w-2xl text-center">
-                    <h1 className="mt-4 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
+                    <span className="inline-flex rounded-full bg-[#EAF2FF] px-4 py-1 text-xs font-bold tracking-widest text-[#004DEB] uppercase border border-[#DCE4F0]">
+                        Get In Touch
+                    </span>
+                    <h1 className="mt-4 text-3xl font-extrabold tracking-tight text-[#0F172A] sm:text-5xl">
                         Let’s talk about your next project
                     </h1>
-                    <p className="mt-4 text-base leading-relaxed text-gray-600 sm:text-lg">
+                    <p className="mt-4 text-base leading-relaxed text-[#64748B] sm:text-lg">
                         Have an inquiry, an idea, or just want to say hi? Reach out and our team will get back to you within 24 hours.
                     </p>
                 </div>
 
                 <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-8">
                     {/* Left Column: Contact Info & Socials */}
-                    <div className="flex flex-col justify-between space-y-8 rounded-2xl bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 p-8 text-white shadow-xl lg:col-span-5 lg:p-10">
+                    <div className="flex flex-col justify-between space-y-8 rounded-2xl bg-[#0F172A] border border-[#334155] p-8 text-white shadow-xl lg:col-span-5 lg:p-10">
                         <div>
                             <h2 className="text-2xl font-bold tracking-tight text-white">Contact Information</h2>
                             <p className="mt-2 text-sm text-slate-300">
@@ -54,7 +57,7 @@ export default function ContactUs() {
                                 {/* Location */}
                                 <div className="flex items-start gap-4">
                                     <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/15">
-                                        <svg className="h-5 w-5 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                        <svg className="h-5 w-5 text-[#00D0F4]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                                         </svg>
@@ -179,10 +182,10 @@ export default function ContactUs() {
                     </div>
 
                     {/* Right Column: Contact Form */}
-                    <div className="rounded-2xl border border-gray-100 bg-white p-8 shadow-xl shadow-gray-200/50 lg:col-span-7 lg:p-10">
+                    <div className="rounded-2xl border border-[#DCE4F0] bg-white p-8 shadow-xl shadow-[#004DEB]/5 lg:col-span-7 lg:p-10">
                         {wasSuccessful && (
-                            <div className="mb-6 flex items-center gap-3 rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-800">
-                                <svg className="h-5 w-5 shrink-0 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <div className="mb-6 flex items-center gap-3 rounded-xl border border-[#059669]/30 bg-[#059669]/10 p-4 text-sm font-medium text-[#059669]">
+                                <svg className="h-5 w-5 shrink-0 text-[#059669]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                                 </svg>
                                 <span>Thank you! Your message has been sent. We will get back to you shortly.</span>
@@ -191,8 +194,8 @@ export default function ContactUs() {
 
                         <form onSubmit={submit} className="space-y-6">
                             <div>
-                                <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-700">
-                                    Full Name <span className="text-rose-500">*</span>
+                                <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-[#0F172A]">
+                                    Full Name <span className="text-[#DC2626]">*</span>
                                 </label>
                                 <input
                                     type="text"
@@ -207,8 +210,8 @@ export default function ContactUs() {
 
                             <div className="grid gap-6 md:grid-cols-2">
                                 <div>
-                                    <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-700">
-                                        Email Address <span className="text-rose-500">*</span>
+                                    <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-[#0F172A]">
+                                        Email Address <span className="text-[#DC2626]">*</span>
                                     </label>
                                     <input
                                         type="email"
@@ -222,7 +225,7 @@ export default function ContactUs() {
                                 </div>
 
                                 <div>
-                                    <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-700">
+                                    <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-[#0F172A]">
                                         Phone Number
                                     </label>
                                     <input
@@ -237,8 +240,8 @@ export default function ContactUs() {
                             </div>
 
                             <div>
-                                <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-700">
-                                    Message / Details <span className="text-rose-500">*</span>
+                                <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-[#0F172A]">
+                                    Message / Details <span className="text-[#DC2626]">*</span>
                                 </label>
                                 <textarea
                                     rows={5}
@@ -254,7 +257,7 @@ export default function ContactUs() {
                             <button
                                 type="submit"
                                 disabled={processing}
-                                className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-6 py-3.5 text-sm font-semibold text-white shadow-md shadow-blue-500/20 transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 disabled:cursor-not-allowed disabled:opacity-50"
+                                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#004DEB] px-6 py-4 text-sm font-bold text-white shadow-md shadow-[#004DEB]/25 transition duration-150 ease-in-out hover:bg-[#0038B8] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#004DEB]/50 disabled:cursor-not-allowed disabled:bg-[#E2E8F0] disabled:text-[#94A3B8]"
                             >
                                 {processing ? (
                                     <>
@@ -278,7 +281,7 @@ export default function ContactUs() {
                 </div>
 
                 {/* Interactive Location Map */}
-                <div className="mt-16 overflow-hidden rounded-2xl border border-gray-200 bg-white p-2 shadow-sm">
+                <div className="mt-16 overflow-hidden rounded-2xl border border-[#DCE4F0] bg-white p-2 shadow-sm">
                     <iframe
                         title="Office Location Map"
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100939.98555098464!2d-122.50764017940177!3d37.757814996609724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"

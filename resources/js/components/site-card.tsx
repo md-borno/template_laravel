@@ -1,22 +1,67 @@
 import { useEffect, useRef } from 'react';
 
-type Card = { brand: string; name: string; badge?: string };
+type Card = { 
+    title: string; 
+    description: string; 
+    linkText: string;
+    image: string;
+};
 
 const cards: Card[] = [
-    { brand: 'Amazon', name: 'Kindle Paperwhite' },
-    { brand: 'Away', name: 'The Carry-On' },
-    { brand: 'Bose', name: 'Headphones 700', badge: 'NEW' },
-    { brand: 'Onsen', name: 'Towel Set' },
-    { brand: 'Kinto', name: 'Travel Tumbler 500ml' },
-    { brand: 'Brand', name: 'Product name' },
-    { brand: 'Brand', name: 'Product name' },
-    { brand: 'Brand', name: 'Product name' },
+    { 
+        title: 'EdTech', 
+        description: 'LMS solutions built with Moodle: live classes, assessments, compliance & reporting to empower learners.', 
+        linkText: 'Learn More',
+        image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=600'
+    },
+    { 
+        title: 'Fintech', 
+        description: 'Secure, scalable fintech & blockchain platforms built to transform payments, lending, and risk management.', 
+        linkText: 'Learn More',
+        image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600'
+    },
+    { 
+        title: 'E-Commerce', 
+        description: 'Transform your store with certified nopCommerce themes, plugins & custom apps for speed, UX & conversion.', 
+        linkText: 'Learn More',
+        image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=600'
+    },
+    { 
+        title: 'Pharma', 
+        description: 'Regulation-first pharma & healthcare software: compliant platforms supporting HCPs, education & analytics.', 
+        linkText: 'Learn More',
+        image: 'https://images.unsplash.com/photo-1532187863486-abf9db6147d5?auto=format&fit=crop&q=80&w=600'
+    },
+    { 
+        title: 'Telecom', 
+        description: 'Enterprise-grade telecom applications that scale securely to serve millions with reliability & speed.', 
+        linkText: 'Learn More',
+        image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=600'
+    },
+    { 
+        title: 'Retail', 
+        description: 'Smart retail systems streamlining inventory, customer journeys & omnichannel sales for business growth.', 
+        linkText: 'Learn More',
+        image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=600'
+    },
+    { 
+        title: 'Software/ITES', 
+        description: 'Cutting-edge custom software & IT-enabled solutions solving complex problems with innovation & agility.', 
+        linkText: 'Learn More',
+        image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=600'
+    },
+    { 
+        title: 'Startups', 
+        description: 'Lean, fast-moving digital builds for startups: MVPs, product-market fit & scalable tech from day one.', 
+        linkText: 'Learn More',
+        image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32d7?auto=format&fit=crop&q=80&w=600'
+    },
 ];
 
-const SETS = 6; // the list is repeated so the loop is seamless on wide screens
-const SPEED = 40; // auto-scroll speed, px per second
-const RESUME_AFTER = 1500; // ms before auto-scroll resumes after wheel / touch / drag
-const START_CARD = 2; // which card is centered first
+const SETS = 6; 
+const SPEED = 40; 
+const RESUME_AFTER = 1500; 
+const START_CARD = 2; 
 
 export default function SiteCard() {
     const trackRef = useRef<HTMLDivElement>(null);
@@ -49,7 +94,6 @@ export default function SiteCard() {
             loop = lefts[n] - lefts[0];
         };
 
-        // coverflow: centre card is biggest, cards shrink with distance from the middle
         const style = () => {
             const vc = el.scrollLeft + el.clientWidth / 2;
             nodes.current.forEach((node, i) => {
@@ -58,14 +102,12 @@ export default function SiteCard() {
                 const s =
                     1 -
                     0.2 * Math.min(d, 1) -
-                    0.18 * Math.min(Math.max(d - 1, 0), 1); // centre = 1, next = .8, then .62
+                    0.18 * Math.min(Math.max(d - 1, 0), 1); 
                 node.style.transform = `scale(${s.toFixed(3)})`;
                 node.style.zIndex = String(100 - Math.round(d * 10));
             });
         };
 
-        // every set looks identical, so shifting by whole loops is invisible.
-        // we only do it while idle, so it never interrupts a drag, swipe or wheel.
         const wrap = (v: number) => {
             const lo = loop * 2;
             const span = loop * 2;
@@ -77,7 +119,7 @@ export default function SiteCard() {
             last = now;
             const idle = !drag.current.on && now > holdUntil.current;
             if (!reduce && idle && !hover.current) {
-                pos = wrap(pos + SPEED * dt); // float position so slow speeds are not rounded away
+                pos = wrap(pos + SPEED * dt);
                 el.scrollLeft = pos;
             } else {
                 if (idle) {
@@ -95,11 +137,10 @@ export default function SiteCard() {
         el.scrollLeft = pos;
         style();
 
-        // keep sizes in sync with native scrolling on the same frame (no lag / wobble)
         el.addEventListener('scroll', style, { passive: true });
 
         const ro = new ResizeObserver(() => {
-            const frac = (el.scrollLeft / loop) % 1; // same place in the loop after a resize
+            const frac = (el.scrollLeft / loop) % 1; 
             measure();
             pos = wrap(loop * 3 + frac * loop);
             el.scrollLeft = pos;
@@ -117,7 +158,7 @@ export default function SiteCard() {
     const hold = () => (holdUntil.current = performance.now() + RESUME_AFTER);
 
     const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-        if (e.pointerType !== 'mouse') return; // touch uses native scrolling
+        if (e.pointerType !== 'mouse') return; 
         const el = trackRef.current!;
         drag.current = { on: true, x: e.clientX, left: el.scrollLeft };
         el.setPointerCapture(e.pointerId);
@@ -137,8 +178,16 @@ export default function SiteCard() {
 
     let k = 0;
     return (
-        <section className="pc-section" aria-label="Featured products">
+        <section className="pc-section" aria-label="Industries We Power">
             <style>{css}</style>
+            
+            <div className="pc-header">
+                <h2>
+                    Industries We Power <br/>
+                    <span>with Innovation</span>
+                </h2>
+            </div>
+
             <div
                 ref={trackRef}
                 className="pc-track"
@@ -166,17 +215,13 @@ export default function SiteCard() {
                                 className="pc-card"
                                 aria-hidden={set !== 0}
                             >
-                                <div className="pc-img" />
+                                <div className="pc-img">
+                                    <img src={c.image} alt={`${c.title} industry`} loading="lazy" />
+                                </div>
                                 <div className="pc-info">
-                                    <p className="pc-brand">
-                                        {c.badge && (
-                                            <span className="pc-badge">
-                                                {c.badge}
-                                            </span>
-                                        )}
-                                        {c.brand}
-                                    </p>
-                                    <h3 className="pc-name">{c.name}</h3>
+                                    <h3 className="pc-name">{c.title}</h3>
+                                    <p className="pc-desc">{c.description}</p>
+                                    
                                 </div>
                             </article>
                         );
@@ -188,19 +233,31 @@ export default function SiteCard() {
 }
 
 const css = `
-.pc-section { background: #111113; padding: clamp(24px, 5vw, 64px) 0; overflow: hidden; }
+.pc-section { position: relative; z-index: 10; isolation: isolate; background: #F8FAFC; padding: clamp(48px, 6vw, 80px) 0; overflow: hidden; font-family: system-ui, -apple-system, sans-serif; }
 
-.pc-track { --w: clamp(250px, 34vw, 500px); display: flex; align-items: center; overflow-x: auto;
-  padding: 72px 0; scrollbar-width: none; cursor: grab; user-select: none; overscroll-behavior-x: contain; }
+.pc-header { text-align: center; margin-bottom: 24px; padding: 0 24px; }
+.pc-header h2 { font-size: clamp(32px, 4vw, 48px); font-weight: 700; color: #0F172A; line-height: 1.2; margin: 0; }
+.pc-header h2 span { color: #3B82F6; }
+
+.pc-track { --w: clamp(280px, 36vw, 420px); display: flex; align-items: center; overflow-x: auto;
+  padding: 40px 0 72px 0; scrollbar-width: none; cursor: grab; user-select: none; overscroll-behavior-x: contain; }
 .pc-track::-webkit-scrollbar { display: none; }
 .pc-track.pc-dragging { cursor: grabbing; }
 
-.pc-card { flex: 0 0 var(--w); margin-left: calc(var(--w) * -.4); aspect-ratio: 387 / 495; display: flex; flex-direction: column;
-  overflow: hidden; border-radius: 14px; background: #fff; color: #111; box-shadow: 0 20px 50px rgba(0,0,0,.5); will-change: transform; }
+.pc-card { flex: 0 0 var(--w); margin-left: calc(var(--w) * -.35); aspect-ratio: 387 / 520; display: flex; flex-direction: column;
+  overflow: hidden; border-radius: 16px; background: #FFFFFF; color: #0F172A; border: 1px solid #DCE4F0; box-shadow: 0 16px 40px rgba(15,23,42,.08); will-change: transform; transition: box-shadow 0.3s ease; }
+.pc-card:hover { box-shadow: 0 24px 48px rgba(15,23,42,.12); }
 
-.pc-img { flex: 0 0 78%; background: #f5f5f5; }
-.pc-info { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 clamp(16px, 2vw, 30px); border-top: 1px solid #ececec; min-width: 0; }
-.pc-brand { display: flex; align-items: center; gap: 8px; margin: 0; font-size: clamp(13px, 1.1vw, 16px); color: #9a9a9a; white-space: nowrap; }
-.pc-badge { background: #efefef; color: #222; border-radius: 4px; padding: 2px 7px; font-size: clamp(11px, .95vw, 13px); font-weight: 500; }
-.pc-name { margin: 4px 0 0; font-size: clamp(18px, 2.2vw, 30px); font-weight: 600; letter-spacing: -.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pc-img { flex: 0 0 45%; position: relative; overflow: hidden; background-color: #E2E8F0; }
+.pc-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+.pc-card:hover .pc-img img { transform: scale(1.05); }
+
+.pc-info { flex: 1; display: flex; flex-direction: column; padding: clamp(20px, 2.5vw, 32px); border-top: 1px solid #DCE4F0; min-width: 0; background: #FFFFFF; }
+
+.pc-name { margin: 0; font-size: clamp(20px, 2.2vw, 26px); font-weight: 700; letter-spacing: -.02em; color: #0F172A; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pc-desc { margin: 12px 0 0; font-size: clamp(14px, 1.1vw, 15px); color: #64748B; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.pc-link { margin-top: auto; display: inline-flex; align-items: center; gap: 6px; color: #3B82F6; font-weight: 600; font-size: 15px; text-decoration: none; transition: color 0.2s ease; }
+.pc-link:hover { color: #2563EB; }
+.pc-link span { transition: transform 0.2s ease; }
+.pc-link:hover span { transform: translateX(4px); }
 `;

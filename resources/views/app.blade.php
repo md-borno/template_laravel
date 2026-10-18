@@ -19,14 +19,27 @@
             })();
         </script>
 
+        {{-- Immediate check: suppress preloader if already seen on first visit --}}
+        <script>
+            try {
+                if (
+                    (sessionStorage.getItem('codlexa_intro_viewed_v1') === 'true' || localStorage.getItem('codlexa_intro_viewed_v1') === 'true') &&
+                    !window.location.search.includes('intro') &&
+                    !window.location.search.includes('loader')
+                ) {
+                    document.documentElement.classList.add('codlexa-intro-seen');
+                }
+            } catch (e) {}
+        </script>
+
         {{-- Inline style to set the HTML background color based on our theme in app.css --}}
         <style>
             html {
-                background-color: oklch(1 0 0);
+                background-color: #F8FAFC;
             }
 
             html.dark {
-                background-color: oklch(0.145 0 0);
+                background-color: #0F172A;
             }
         </style>
 
@@ -43,6 +56,7 @@
         </x-inertia::head>
     </head>
     <body class="font-sans antialiased">
+        @include('partials.preloader')
         <x-inertia::app />
     </body>
 </html>

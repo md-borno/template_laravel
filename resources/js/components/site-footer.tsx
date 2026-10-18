@@ -93,7 +93,7 @@ export default function SiteFooter() {
     return (
         <footer
             ref={footerRef}
-            className="relative overflow-hidden bg-[#f1f1ed] text-[#1b1a19] will-change-[border-radius]"
+            className="relative overflow-hidden bg-[#0F172A] text-[#CBD5E1] will-change-[border-radius]"
             style={{
                 borderRadius: `50% 50% 0 0 / ${MAX_CURVE}px ${MAX_CURVE}px 0 0`,
             }}
@@ -132,17 +132,17 @@ export default function SiteFooter() {
             </svg>
 
             {/* bottom row */}
-            <div className="mx-auto max-w-[1400px] px-6 pb-5 sm:px-10">
-                <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-[#dcdcd6] pt-5 text-sm opacity-70 sm:flex-row">
+            <div className="mx-auto max-w-[1400px] px-6 pb-6 sm:px-10">
+                <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-[#334155] pt-5 text-sm text-[#CBD5E1] sm:flex-row">
                     <p>
                         © {new Date().getFullYear()} {NAME}. All rights
                         reserved.
                     </p>
                     <div className="flex gap-6">
-                        <Link href="/privacy" className="hover:underline">
+                        <Link href="/privacy" className="transition hover:text-[#00D0F4]">
                             Privacy
                         </Link>
-                        <Link href="/terms" className="hover:underline">
+                        <Link href="/terms" className="transition hover:text-[#00D0F4]">
                             Terms
                         </Link>
                     </div>

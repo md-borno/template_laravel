@@ -46,19 +46,19 @@ export default function UserMessages({ messages }: Props) {
             <main className="p-6">
                 <div className="mb-6 flex items-center justify-between">
                     <div>
-                        <h1 className="text-2xl font-bold text-gray-900">
+                        <h1 className="text-2xl font-bold text-[#0F172A]">
                             User Messages / Inquiries
                         </h1>
-                        <p className="mt-1 text-sm text-gray-500">
-                            Total messages received: <span className="font-semibold text-gray-700">{messages.total}</span>
+                        <p className="mt-1 text-sm text-[#64748B]">
+                            Total messages received: <span className="font-semibold text-[#0F172A]">{messages.total}</span>
                         </p>
                     </div>
                 </div>
 
-                <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+                <div className="overflow-hidden rounded-2xl border border-[#DCE4F0] bg-white shadow-sm">
                     <div className="overflow-x-auto">
-                        <table className="w-full text-left text-sm text-gray-600">
-                            <thead className="border-b border-gray-200 bg-gray-50 text-xs uppercase tracking-wider text-gray-700">
+                        <table className="w-full text-left text-sm text-[#64748B]">
+                            <thead className="border-b border-[#DCE4F0] bg-[#F8FAFC] text-xs uppercase tracking-wider text-[#0F172A]">
                                 <tr>
                                     <th className="px-6 py-4">ID</th>
                                     <th className="px-6 py-4">Sender</th>
@@ -68,52 +68,52 @@ export default function UserMessages({ messages }: Props) {
                                     <th className="px-6 py-4 text-right">Action</th>
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-gray-200">
+                            <tbody className="divide-y divide-[#DCE4F0]">
                                 {messages.data.length === 0 ? (
                                     <tr>
-                                        <td colSpan={6} className="px-6 py-10 text-center text-gray-400">
+                                        <td colSpan={6} className="px-6 py-10 text-center text-[#94A3B8]">
                                             No messages received yet.
                                         </td>
                                     </tr>
                                 ) : (
                                     messages.data.map((msg) => (
-                                        <tr key={msg.id} className="hover:bg-gray-50/75 transition-colors">
-                                            <td className="px-6 py-4 font-mono text-xs text-gray-400">
+                                        <tr key={msg.id} className="hover:bg-[#EAF2FF]/50 transition-colors">
+                                            <td className="px-6 py-4 font-mono text-xs text-[#94A3B8]">
                                                 #{msg.id}
                                             </td>
-                                            <td className="px-6 py-4 font-medium text-gray-900">
+                                            <td className="px-6 py-4 font-bold text-[#0F172A]">
                                                 {msg.full_name}
                                             </td>
                                             <td className="px-6 py-4">
                                                 <div>
                                                     <a
                                                         href={`mailto:${msg.email}`}
-                                                        className="text-blue-600 hover:underline block"
+                                                        className="text-[#004DEB] hover:underline font-medium block"
                                                     >
                                                         {msg.email}
                                                     </a>
                                                     {msg.phone ? (
                                                         <a
                                                             href={`tel:${msg.phone}`}
-                                                            className="text-xs text-gray-500 hover:text-gray-700 block mt-0.5"
+                                                            className="text-xs text-[#64748B] hover:text-[#004DEB] block mt-0.5"
                                                         >
                                                             {msg.phone}
                                                         </a>
                                                     ) : (
-                                                        <span className="text-xs text-gray-400">No phone</span>
+                                                        <span className="text-xs text-[#94A3B8]">No phone</span>
                                                     )}
                                                 </div>
                                             </td>
-                                            <td className="px-6 py-4 max-w-xs truncate text-gray-700">
+                                            <td className="px-6 py-4 max-w-xs truncate text-[#0F172A]">
                                                 {msg.details}
                                             </td>
-                                            <td className="px-6 py-4 text-xs text-gray-500 whitespace-nowrap">
+                                            <td className="px-6 py-4 text-xs text-[#64748B] whitespace-nowrap">
                                                 {formatDate(msg.created_at)}
                                             </td>
                                             <td className="px-6 py-4 text-right whitespace-nowrap">
                                                 <button
                                                     onClick={() => setSelectedMessage(msg)}
-                                                    className="rounded bg-gray-100 px-3 py-1.5 text-xs font-semibold text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                                    className="rounded-lg bg-[#EAF2FF] px-3.5 py-1.5 text-xs font-semibold text-[#004DEB] transition hover:bg-[#00D0F4] hover:text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-[#004DEB]/40"
                                                 >
                                                     View
                                                 </button>
@@ -153,20 +153,20 @@ export default function UserMessages({ messages }: Props) {
 
                 {/* Message Detail Modal */}
                 {selectedMessage && (
-                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-                        <div className="w-full max-w-lg rounded-xl bg-white p-6 shadow-xl">
-                            <div className="flex items-start justify-between border-b border-gray-100 pb-3">
+                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4">
+                        <div className="w-full max-w-lg rounded-2xl bg-white p-6 shadow-2xl border border-[#DCE4F0]">
+                            <div className="flex items-start justify-between border-b border-[#DCE4F0] pb-3">
                                 <div>
-                                    <h3 className="text-lg font-bold text-gray-900">
+                                    <h3 className="text-lg font-bold text-[#0F172A]">
                                         {selectedMessage.full_name}
                                     </h3>
-                                    <p className="text-xs text-gray-500">
+                                    <p className="text-xs text-[#64748B]">
                                         Received: {formatDate(selectedMessage.created_at)}
                                     </p>
                                 </div>
                                 <button
                                     onClick={() => setSelectedMessage(null)}
-                                    className="text-gray-400 hover:text-gray-600 text-lg font-semibold"
+                                    className="text-[#94A3B8] hover:text-[#0F172A] text-lg font-bold"
                                 >
                                     ✕
                                 </button>
@@ -174,32 +174,32 @@ export default function UserMessages({ messages }: Props) {
 
                             <div className="mt-4 space-y-3 text-sm">
                                 <div>
-                                    <span className="font-semibold text-gray-700">Email:</span>{' '}
+                                    <span className="font-semibold text-[#0F172A]">Email:</span>{' '}
                                     <a
                                         href={`mailto:${selectedMessage.email}`}
-                                        className="text-blue-600 hover:underline"
+                                        className="text-[#004DEB] hover:underline font-medium"
                                     >
                                         {selectedMessage.email}
                                     </a>
                                 </div>
                                 <div>
-                                    <span className="font-semibold text-gray-700">Phone:</span>{' '}
+                                    <span className="font-semibold text-[#0F172A]">Phone:</span>{' '}
                                     {selectedMessage.phone ? (
                                         <a
                                             href={`tel:${selectedMessage.phone}`}
-                                            className="text-blue-600 hover:underline"
+                                            className="text-[#004DEB] hover:underline font-medium"
                                         >
                                             {selectedMessage.phone}
                                         </a>
                                     ) : (
-                                        <span className="text-gray-400">Not provided</span>
+                                        <span className="text-[#94A3B8]">Not provided</span>
                                     )}
                                 </div>
                                 <div>
-                                    <span className="font-semibold text-gray-700 block mb-1">
+                                    <span className="font-semibold text-[#0F172A] block mb-1">
                                         Message:
                                     </span>
-                                    <div className="rounded-lg bg-gray-50 p-3 text-gray-800 whitespace-pre-wrap border border-gray-200 max-h-60 overflow-y-auto">
+                                    <div className="rounded-xl bg-[#F8FAFC] p-4 text-[#0F172A] whitespace-pre-wrap border border-[#DCE4F0] max-h-60 overflow-y-auto leading-relaxed">
                                         {selectedMessage.details}
                                     </div>
                                 </div>
@@ -208,7 +208,7 @@ export default function UserMessages({ messages }: Props) {
                             <div className="mt-6 flex justify-end">
                                 <button
                                     onClick={() => setSelectedMessage(null)}
-                                    className="rounded-md bg-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-300"
+                                    className="rounded-xl bg-[#004DEB] px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0038B8]"
                                 >
                                     Close
                                 </button>

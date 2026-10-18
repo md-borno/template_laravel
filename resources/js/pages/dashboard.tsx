@@ -33,14 +33,14 @@ export default function Dashboard({ visits, recent }: Props) {
                     {cards.map((c) => (
                         <div
                             key={c.label}
-                            className="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border"
+                            className="relative aspect-video overflow-hidden rounded-2xl border border-[#DCE4F0] bg-white shadow-sm"
                         >
-                            <PlaceholderPattern className="absolute inset-0 size-full stroke-neutral-900/20 dark:stroke-neutral-100/20" />
+                            <PlaceholderPattern className="absolute inset-0 size-full stroke-[#004DEB]/10" />
                             <div className="relative z-10 flex h-full flex-col items-center justify-center">
-                                <div className="text-sm text-muted-foreground">
+                                <div className="text-sm font-semibold text-[#64748B]">
                                     {c.label}
                                 </div>
-                                <div className="mt-2 text-5xl font-bold">
+                                <div className="mt-2 text-5xl font-extrabold text-[#004DEB]">
                                     {c.value}
                                 </div>
                             </div>

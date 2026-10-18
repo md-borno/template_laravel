@@ -1,24 +1,27 @@
 <?php
 
+use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CareerController;
+use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ContactUsController;
-use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\PortfolioController;
-use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\TrackVisit;
 
-// Route::inertia('/', 'welcome')->name('home');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+Route::get('/blog/{post}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('/services', [ServicesController::class, 'index'])->name('services');
 Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact-us');
 Route::post('/contact-us', [ContactUsController::class, 'store'])->name('contact-us.store');
 Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio');
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');
+Route::get('/career', [CareerController::class, 'index'])->name('career');
+Route::get('/careers', fn() => redirect('/career'));
 
 
 // 

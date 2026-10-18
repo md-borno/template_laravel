@@ -1,18 +1,18 @@
-import type { CSSProperties } from 'react';
+import { useEffect, useState, type CSSProperties } from 'react';
 
 const TITLE = 'BUSINESS CONCEPT';
 const DOTS = [
-    '#e91e63',
-    '#d01c5e',
-    '#b01a62',
-    '#931a60',
-    '#7a1559',
-    '#651250',
-    '#531049',
-    '#430e46',
-    '#340b42',
-    '#26093d',
-    '#16063a',
+    '#00D0F4',
+    '#00B8F5',
+    '#009FF5',
+    '#007FF5',
+    '#0063EE',
+    '#004DEB',
+    '#0038B8',
+    '#002C94',
+    '#0F172A',
+    '#CA8A04',
+    '#EAB308',
 ];
 const characters = TITLE.split('').map(char => ({ segment: char }));
 const delay = (s: number): CSSProperties => ({ animationDelay: `${s}s` });
@@ -35,8 +35,39 @@ for (let r = 0; r < 5; r++) {
 }
 
 export default function SiteBanner() {
+    const [playIntro, setPlayIntro] = useState<boolean>(() => {
+        if (typeof window === 'undefined') return false;
+        try {
+            const params = new URLSearchParams(window.location.search);
+            if (params.has('replay') || params.has('intro')) return true;
+            const seenSession = sessionStorage.getItem('codlexa_home_intro_seen');
+            const seenLocal = localStorage.getItem('codlexa_home_intro_seen');
+            return !(seenSession === 'true' || seenLocal === 'true');
+        } catch {
+            return false;
+        }
+    });
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            try {
+                sessionStorage.setItem('codlexa_home_intro_seen', 'true');
+                localStorage.setItem('codlexa_home_intro_seen', 'true');
+            } catch { }
+
+            // Expose a helper in console to allow easy replaying for tests
+            (window as unknown as { replayIntro?: () => void }).replayIntro = () => {
+                try {
+                    sessionStorage.removeItem('codlexa_home_intro_seen');
+                    localStorage.removeItem('codlexa_home_intro_seen');
+                } catch { }
+                window.location.reload();
+            };
+        }
+    }, []);
+
     return (
-        <section className="bc-root relative h-screen w-full overflow-hidden">
+        <section className={`bc-root relative h-screen w-full overflow-hidden ${!playIntro ? 'bc-static' : ''}`}>
             <style>{css}</style>
             <div className="bc-bg absolute inset-0" />
 
@@ -76,14 +107,14 @@ export default function SiteBanner() {
                         className="bc-grow absolute inset-0"
                         style={{
                             background:
-                                'linear-gradient(135deg,#e91e63 0%,#a0145a 25%,#5a0f55 55%,#2a0845 100%)',
+                                'linear-gradient(135deg,#004DEB 0%,#007FF5 45%,#00D0F4 100%)',
                         }}
                     >
                         <div
                             className="absolute inset-0"
                             style={{
                                 background:
-                                    'linear-gradient(to top right,rgba(233,30,99,.9),transparent 55%)',
+                                    'linear-gradient(to top right,rgba(0,77,235,.85),transparent 55%)',
                             }}
                         />
                     </div>
@@ -98,17 +129,17 @@ export default function SiteBanner() {
                 >
                     <defs>
                         <linearGradient id="bc-scr" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0" stopColor="#ff3c8e" />
-                            <stop offset="1" stopColor="#8a1a6a" />
+                            <stop offset="0" stopColor="#00D0F4" />
+                            <stop offset="1" stopColor="#004DEB" />
                         </linearGradient>
                         <linearGradient id="bc-bk" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0" stopColor="#8a1a6a" />
-                            <stop offset="1" stopColor="#3a0b50" />
+                            <stop offset="0" stopColor="#007FF5" />
+                            <stop offset="1" stopColor="#0F172A" />
                         </linearGradient>
                         <linearGradient id="bc-mug" x1="0" y1="0" x2="1" y2="0">
                             <stop offset="0" stopColor="#ffffff" />
-                            <stop offset=".6" stopColor="#e8d9ee" />
-                            <stop offset="1" stopColor="#b79ac4" />
+                            <stop offset=".6" stopColor="#EAF2FF" />
+                            <stop offset="1" stopColor="#DCE4F0" />
                         </linearGradient>
                     </defs>
 
@@ -116,7 +147,7 @@ export default function SiteBanner() {
                     <g className="bc-part" style={delay(3.8)}>
                         <polygon
                             points="10,230 320,40 320,310 10,500"
-                            fill="#1d0a3d"
+                            fill="#0F172A"
                         />
                         <polygon
                             points="28,235 312,62 312,225 28,400"
@@ -124,20 +155,20 @@ export default function SiteBanner() {
                         />
                         <polygon
                             points="28,400 312,225 312,300 28,470"
-                            fill="#4a0f5c"
+                            fill="#0038B8"
                         />
                         <polygon
                             points="60,300 200,215 200,225 60,310"
                             fill="#fff"
-                            opacity=".12"
+                            opacity=".15"
                         />
                         <polygon
                             points="130,470 230,418 255,440 150,500"
-                            fill="#1a1020"
+                            fill="#0F172A"
                         />
                         <polygon
                             points="110,500 245,430 275,450 140,520"
-                            fill="#2a1535"
+                            fill="#1E293B"
                         />
                     </g>
 
@@ -145,11 +176,11 @@ export default function SiteBanner() {
                     <g className="bc-part" style={delay(4.2)}>
                         <polygon
                             points="300,135 400,80 445,100 345,160"
-                            fill="#f4f4f4"
+                            fill="#F8FAFC"
                         />
                         <polygon
                             points="300,135 345,160 345,175 300,150"
-                            fill="#e91e7a"
+                            fill="#EAB308"
                         />
                         <polygon
                             points="345,160 445,100 445,330 345,390"
@@ -157,9 +188,9 @@ export default function SiteBanner() {
                         />
                         <polygon
                             points="345,160 345,390 305,370 305,150"
-                            fill="#a3186a"
+                            fill="#004DEB"
                         />
-                        <g stroke="#a0a0a0" strokeWidth="3">
+                        <g stroke="#94A3B8" strokeWidth="3">
                             <line x1="320" y1="130" x2="410" y2="82" />
                             <line x1="326" y1="136" x2="416" y2="88" />
                             <line x1="332" y1="142" x2="422" y2="94" />
@@ -167,7 +198,7 @@ export default function SiteBanner() {
                         <polygon
                             points="365,200 425,165 425,185 365,220"
                             fill="#fff"
-                            opacity=".18"
+                            opacity=".2"
                         />
                     </g>
 
@@ -220,7 +251,7 @@ export default function SiteBanner() {
                             cy="447"
                             rx="6"
                             ry="4"
-                            fill="#e91e7a"
+                            fill="#00D0F4"
                             transform="rotate(-22 440 447)"
                         />
                     </g>
@@ -232,12 +263,12 @@ export default function SiteBanner() {
                             cy="405"
                             rx="52"
                             ry="20"
-                            fill="#12081a"
+                            fill="#0F172A"
                             opacity=".45"
                         />
                         <path
                             d="M562,345 C600,340 598,398 560,396"
-                            stroke="#e8d9ee"
+                            stroke="#EAF2FF"
                             strokeWidth="10"
                             fill="none"
                             strokeLinecap="round"
@@ -270,7 +301,7 @@ export default function SiteBanner() {
                         />
                         <path
                             d="M500,350 L500,385"
-                            stroke="#e91e7a"
+                            stroke="#00D0F4"
                             strokeWidth="5"
                             strokeLinecap="round"
                             opacity=".8"
@@ -296,16 +327,16 @@ export default function SiteBanner() {
 
                     {/* mountains */}
                     <g className="bc-part" style={delay(5.5)}>
-                        <polygon points="30,500 55,420 80,500" fill="#5a1670" />
+                        <polygon points="30,500 55,420 80,500" fill="#004DEB" />
                         <polygon points="55,420 45,455 65,455" fill="#fff" />
                         <polygon
                             points="65,510 100,400 135,510"
-                            fill="#6b1a7a"
+                            fill="#007FF5"
                         />
                         <polygon points="100,400 85,450 115,450" fill="#fff" />
                         <polygon
                             points="105,510 130,450 155,510"
-                            fill="#4a0f5c"
+                            fill="#0038B8"
                         />
                         <polygon points="130,450 122,475 138,475" fill="#fff" />
                     </g>
@@ -316,7 +347,7 @@ export default function SiteBanner() {
                     className="bc-banner bc-bn absolute"
                     style={{
                         background:
-                            'linear-gradient(90deg,#14003a,#5a0f55 60%,#a0145a)',
+                            'linear-gradient(90deg,#0F172A,#004DEB 60%,#00D0F4)',
                     }}
                 >
                     <h1
@@ -346,16 +377,13 @@ export default function SiteBanner() {
 
                 {/* text */}
                 <div className="bc-fade bc-text absolute" style={delay(5.4)}>
-                    <h2 className="bc-h2 font-light tracking-wide text-neutral-700">
-                        LOREM IPSUM
+                    <h2 className="bc-h2 font-semibold tracking-wide text-[#0F172A]">
+                        DIGITAL SOLUTIONS
                     </h2>
-                    <p className="bc-p mt-2 leading-snug text-neutral-600">
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing
-                        elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-                        dolore magna aliquam erat volutpat. Ut wisi enim ad
-                        minim veniam, quis nostrud exerci tation ullamcorper
-                        suscipit lobortis nisl ut aliquip ex ea commodo
-                        consequat.
+                    <p className="bc-p mt-2 leading-snug text-[#64748B]">
+                        Build powerful, modern platforms with clean design,
+                        seamless interactions, and high-performance engineering
+                        built to scale your brand.
                     </p>
                 </div>
 
@@ -383,13 +411,13 @@ export default function SiteBanner() {
 }
 
 const css = `
-.bc-root { --ease: cubic-bezier(.77,0,.18,1); --out: cubic-bezier(.16,1,.3,1); background: #07000f; }
+.bc-root { --ease: cubic-bezier(.77,0,.18,1); --out: cubic-bezier(.16,1,.3,1); background: #0F172A; }
 
 .bc-cam { transform: scale(1.12); animation: bc-cam 7s var(--out) forwards; }
 @keyframes bc-cam { to { transform: scale(1); } }
 
-.bc-bg { background: #07000f; animation: bc-bg 1.8s var(--ease) 2.2s forwards; }
-@keyframes bc-bg { to { background: #fafafa; } }
+.bc-bg { background: #0F172A; animation: bc-bg 1.8s var(--ease) 2.2s forwards; }
+@keyframes bc-bg { to { background: #F8FAFC; } }
 
 .bc-poly { clip-path: polygon(0 0, 25% 0, 62% 50%, 25% 100%, 0 100%); }
 
@@ -423,7 +451,7 @@ const css = `
 .bc-pop { opacity: 0; transform: scale(0); animation: bc-pop .6s var(--out) forwards; }
 @keyframes bc-pop { to { opacity: 1; transform: scale(1); } }
 
-.bc-bar { position: absolute; left: 0; right: 0; height: 14vh; background: #000; z-index: 50; animation: bc-bar 1.6s var(--ease) 3.4s forwards; }
+.bc-bar { position: absolute; left: 0; right: 0; height: 14vh; background: #0F172A; z-index: 50; animation: bc-bar 1.6s var(--ease) 3.4s forwards; }
 .bc-bar-t { top: 0; --to: -100%; }
 .bc-bar-b { bottom: 0; --to: 100%; }
 @keyframes bc-bar { to { transform: translateY(var(--to)); } }
@@ -461,6 +489,65 @@ const css = `
   .bc-dots { left: 8%; top: 94%; gap: 1.8vw; }
   .bc-dot { width: 3.4vw; height: 3.4vw; }
   .bc-bar { height: 8vh; }
+}
+
+/* One-time intro complete: instant settled state for all return/subsequent visits */
+.bc-root.bc-static {
+  background: #F8FAFC !important;
+}
+.bc-root.bc-static .bc-cam {
+  transform: scale(1) !important;
+  animation: none !important;
+}
+.bc-root.bc-static .bc-bg {
+  background: #F8FAFC !important;
+  animation: none !important;
+}
+.bc-root.bc-static .bc-poly .bc-grow {
+  transform: scale(1, 1) !important;
+  filter: brightness(1) !important;
+  animation: none !important;
+}
+.bc-root.bc-static .bc-sweep {
+  display: none !important;
+}
+.bc-root.bc-static .bc-layer {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
+.bc-root.bc-static .bc-part {
+  opacity: 1 !important;
+  filter: none !important;
+  transform: none !important;
+  animation: none !important;
+}
+.bc-root.bc-static .bc-float {
+  animation: bc-float 6s ease-in-out infinite !important;
+}
+.bc-root.bc-static .bc-banner {
+  clip-path: inset(0 0 0 0) !important;
+  animation: none !important;
+}
+.bc-root.bc-static .bc-ch {
+  opacity: 1 !important;
+  filter: none !important;
+  transform: none !important;
+  animation: none !important;
+}
+.bc-root.bc-static .bc-fade {
+  opacity: 1 !important;
+  filter: none !important;
+  transform: none !important;
+  animation: none !important;
+}
+.bc-root.bc-static .bc-pop {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+  animation: none !important;
+}
+.bc-root.bc-static .bc-bar {
+  display: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) { .bc-root *, .bc-root { animation-duration: .01ms !important; animation-delay: 0s !important; } }

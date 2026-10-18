@@ -100,8 +100,8 @@ export default function Register({ passwordRules }: Props) {
                             </Button>
 
                             {recentlySuccessful && (
-                                <p className="text-center text-sm text-green-600">
-                                    User created.
+                                <p className="text-center text-sm font-medium text-[#059669]">
+                                    User created successfully.
                                 </p>
                             )}
                         </div>

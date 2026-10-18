@@ -50,10 +50,10 @@ function PristineLightCanvas({ warpSpeed = false }: { warpSpeed?: boolean }) {
     // Particle constellation with light-mode visible luxury pigments
     const count = warpSpeed ? 160 : 85;
     const colors = [
-      { r: 79, g: 70, b: 229 },  // Indigo 600
-      { r: 14, g: 165, b: 233 }, // Sky 500
-      { r: 147, g: 51, b: 234 }, // Purple 600
-      { r: 16, g: 185, b: 129 }, // Emerald 500
+      { r: 0, g: 77, b: 235 },   // Electric Blue #004DEB
+      { r: 0, g: 208, b: 244 },  // Deep Cyan #00D0F4
+      { r: 234, g: 179, b: 8 },  // Gold #EAB308
+      { r: 0, g: 127, b: 245 },  // Blue #007FF5
     ];
 
     const particles = Array.from({ length: count }, () => {
@@ -286,12 +286,12 @@ function CrystallineCard({ children, className = '', glowAccent = 'indigo' }: {
   };
 
   const glowThemes: Record<string, string> = {
-    indigo: 'radial-gradient(420px circle at %X%px %Y%px, rgba(99, 102, 241, 0.12), transparent 70%)',
-    cyan: 'radial-gradient(420px circle at %X%px %Y%px, rgba(14, 165, 233, 0.14), transparent 70%)',
-    purple: 'radial-gradient(420px circle at %X%px %Y%px, rgba(168, 85, 247, 0.12), transparent 70%)',
-    emerald: 'radial-gradient(420px circle at %X%px %Y%px, rgba(16, 185, 129, 0.14), transparent 70%)',
-    amber: 'radial-gradient(420px circle at %X%px %Y%px, rgba(245, 158, 11, 0.12), transparent 70%)',
-    rose: 'radial-gradient(420px circle at %X%px %Y%px, rgba(244, 63, 94, 0.12), transparent 70%)',
+    indigo: 'radial-gradient(420px circle at %X%px %Y%px, rgba(0, 77, 235, 0.16), transparent 70%)',
+    cyan: 'radial-gradient(420px circle at %X%px %Y%px, rgba(0, 208, 244, 0.18), transparent 70%)',
+    purple: 'radial-gradient(420px circle at %X%px %Y%px, rgba(0, 127, 245, 0.16), transparent 70%)',
+    emerald: 'radial-gradient(420px circle at %X%px %Y%px, rgba(5, 150, 105, 0.16), transparent 70%)',
+    amber: 'radial-gradient(420px circle at %X%px %Y%px, rgba(234, 179, 8, 0.16), transparent 70%)',
+    rose: 'radial-gradient(420px circle at %X%px %Y%px, rgba(220, 38, 38, 0.14), transparent 70%)',
   };
 
   const activeGlow = (glowThemes[glowAccent] || glowThemes.indigo)
@@ -420,13 +420,13 @@ function InteractiveEngineConsole() {
       {/* Top Console Bar */}
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 pb-6">
         <div className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-tr from-indigo-50 to-blue-50 text-indigo-600 ring-1 ring-indigo-200/60 shadow-sm">
+          <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-tr from-[#EAF2FF] to-[#E0FAFF] text-[#004DEB] ring-1 ring-[#DCE4F0] shadow-sm">
             <Workflow className="h-5 w-5" />
           </div>
           <div>
             <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
               Autonomous Systems & Neural Orchestrator
-              <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="flex h-2 w-2 rounded-full bg-[#059669] animate-pulse" />
             </h3>
             <p className="text-xs text-slate-500 font-mono">Live architectural simulator • Real-time metrics</p>
           </div>
@@ -448,7 +448,7 @@ function InteractiveEngineConsole() {
               onClick={() => handleModeSwitch(m.id)}
               className={`rounded-2xl border p-5 text-left transition-all duration-300 ${
                 isActive
-                  ? 'border-indigo-500/60 bg-gradient-to-b from-indigo-50/50 to-white shadow-md shadow-indigo-500/5 ring-1 ring-indigo-500/20'
+                  ? 'border-[#004DEB] bg-gradient-to-b from-[#EAF2FF] to-white shadow-md shadow-[#004DEB]/10 ring-1 ring-[#004DEB]/20'
                   : 'border-slate-200/70 bg-white/60 hover:border-slate-300 hover:bg-slate-50/50'
               }`}
             >
@@ -611,7 +611,7 @@ export default function App() {
           >
             <h1 className="mt-8 text-5xl font-black tracking-tight text-slate-950 sm:text-7xl lg:text-8xl leading-none">
               We Build The Engine <br />
-              <span className="bg-gradient-to-r from-indigo-600 via-sky-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#004DEB] via-[#007FF5] to-[#00D0F4] bg-clip-text text-transparent">
                 That Scales Your Business
               </span>
             </h1>
@@ -623,7 +623,7 @@ export default function App() {
             delay={360}
           >
             <p className="mx-auto mt-8 max-w-3xl text-lg text-slate-600 sm:text-2xl font-normal leading-relaxed">
-              We eliminate disjointed vendors. One partner for high-converting <span className="font-semibold text-slate-900">Next.js platforms</span>, mission-critical <span className="font-semibold text-slate-900">HRM, CRM, POS & ERP systems</span>, and autonomous <span className="font-semibold text-indigo-600">AI Agents & Fine-Tuned Models</span>.
+              We eliminate disjointed vendors. One partner for high-converting <span className="font-semibold text-slate-900">Next.js platforms</span>, mission-critical <span className="font-semibold text-slate-900">HRM, CRM, POS & ERP systems</span>, and autonomous <span className="font-semibold text-[#004DEB]">AI Agents & Fine-Tuned Models</span>.
             </p>
           </SpatialReveal>
 
@@ -635,7 +635,7 @@ export default function App() {
             <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
               <a
                 href="#capabilities"
-                className="group inline-flex items-center gap-2.5 rounded-2xl bg-indigo-600 px-8 py-4 font-bold text-white shadow-xl shadow-indigo-600/25 transition-all duration-300 hover:bg-slate-950 hover:shadow-2xl hover:scale-105"
+                className="group inline-flex items-center gap-2.5 rounded-2xl bg-[#004DEB] px-8 py-4 font-bold text-white shadow-xl shadow-[#004DEB]/25 transition-all duration-300 hover:bg-[#0038B8] hover:shadow-2xl hover:scale-105"
               >
                 <span>Discover Capabilities</span>
                 <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -643,9 +643,9 @@ export default function App() {
 
               <a
                 href="#console"
-                className="inline-flex items-center gap-2 rounded-2xl border border-slate-200/90 bg-white/80 px-7 py-4 font-semibold text-slate-800 shadow-sm backdrop-blur-xl transition hover:border-slate-300 hover:bg-slate-50"
+                className="inline-flex items-center gap-2 rounded-2xl border border-slate-200/90 bg-white/80 px-7 py-4 font-semibold text-slate-800 shadow-sm backdrop-blur-xl transition hover:border-[#00D0F4] hover:bg-[#EAF2FF]"
               >
-                <Cpu className="h-4 w-4 text-indigo-600" />
+                <Cpu className="h-4 w-4 text-[#004DEB]" />
                 <span>Simulate AI Workflows</span>
               </a>
             </div>
@@ -794,11 +794,11 @@ export default function App() {
         {/* CONVERSION CTA: Ultra Clean Light Portal */}
         <section id="contact" className="pb-12">
           <SpatialReveal vector="hyperspace-center" triggerKey={replayTrigger}>
-            <div className="relative overflow-hidden rounded-3xl border border-indigo-200/80 bg-gradient-to-b from-indigo-50/70 via-white to-white p-12 text-center shadow-[0_25px_70px_-15px_rgba(99,102,241,0.15)] backdrop-blur-2xl lg:p-20">
+            <div className="relative overflow-hidden rounded-3xl border border-[#DCE4F0] bg-gradient-to-b from-[#EAF2FF] via-white to-white p-12 text-center shadow-[0_25px_70px_-15px_rgba(0,77,235,0.12)] backdrop-blur-2xl lg:p-20">
               {/* Soft radial shine behind content */}
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,#6366f1_0,transparent_60%)] opacity-10" />
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,#004DEB_0,transparent_60%)] opacity-10" />
 
-              <span className="inline-block rounded-full bg-indigo-100 px-4 py-1 text-xs font-mono font-bold uppercase tracking-widest text-indigo-800 border border-indigo-200">
+              <span className="inline-block rounded-full bg-[#FFFBEB] px-4 py-1 text-xs font-mono font-bold uppercase tracking-widest text-[#713F12] border border-[#EAB308]/30">
                 Ready For Market Leadership?
               </span>
 
@@ -813,13 +813,13 @@ export default function App() {
               <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
                 <a
                   href="/contact-us"
-                  className="rounded-2xl bg-indigo-600 px-9 py-4 font-bold text-white shadow-lg shadow-indigo-600/30 transition-all duration-300 hover:bg-slate-950 hover:scale-105 hover:shadow-2xl"
+                  className="rounded-2xl bg-[#004DEB] px-9 py-4 font-bold text-white shadow-lg shadow-[#004DEB]/30 transition-all duration-300 hover:bg-[#0038B8] hover:scale-105 hover:shadow-2xl"
                 >
                   Start Your Project
                 </a>
                 <a
                   href="tel:+18005550199"
-                  className="rounded-2xl border border-slate-200 bg-white/90 px-8 py-4 font-semibold text-slate-800 shadow-sm backdrop-blur-xl transition hover:border-slate-300 hover:bg-slate-50"
+                  className="rounded-2xl border border-[#DCE4F0] bg-white/90 px-8 py-4 font-semibold text-slate-800 shadow-sm backdrop-blur-xl transition hover:border-[#00D0F4] hover:bg-[#EAF2FF]"
                 >
                   Book Technical Discovery
                 </a>

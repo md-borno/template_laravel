@@ -55,55 +55,55 @@ const onFile = (e: React.ChangeEvent<HTMLInputElement>) => {
             <Head title="Blog" />
 
             <div className="p-6">
-                <h1 className="text-2xl font-semibold">Blog Settings</h1>
+                <h1 className="text-2xl font-bold text-[#0F172A]">Blog Settings</h1>
 
                 <form onSubmit={submit} className="mt-6 max-w-xl">
-                    <label className="mb-2 block">Title</label>
+                    <label className="mb-2 block text-sm font-semibold text-[#0F172A]">Title</label>
                     <input
                         type="text"
                         value={data.title}
                         onChange={(e) => setData('title', e.target.value)}
-                        className="w-full rounded-md border px-3 py-2"
+                        className="w-full rounded-xl border border-[#DCE4F0] bg-white px-3.5 py-2.5 text-sm text-[#0F172A] focus:border-[#004DEB] focus:outline-none focus:ring-2 focus:ring-[#004DEB]/20"
                     />
                     {errors.title && (
-                        <p className="mt-1 text-sm text-red-500">{errors.title}</p>
+                        <p className="mt-1 text-sm font-medium text-[#DC2626]">{errors.title}</p>
                     )}
 
-                    <label className="mt-4 mb-2 block">Body</label>
+                    <label className="mt-4 mb-2 block text-sm font-semibold text-[#0F172A]">Body</label>
                     <textarea
                         rows={6}
                         value={data.body}
                         onChange={(e) => setData('body', e.target.value)}
-                        className="w-full rounded-md border px-3 py-2"
+                        className="w-full rounded-xl border border-[#DCE4F0] bg-white px-3.5 py-2.5 text-sm text-[#0F172A] focus:border-[#004DEB] focus:outline-none focus:ring-2 focus:ring-[#004DEB]/20"
                     />
                     {errors.body && (
-                        <p className="mt-1 text-sm text-red-500">{errors.body}</p>
+                        <p className="mt-1 text-sm font-medium text-[#DC2626]">{errors.body}</p>
                     )}
 
-                  <label className="mt-4 mb-2 block">Image</label>
-<input
-    type="file"
-    accept="image/*"
-    onChange={onFile}
-    className="w-full rounded-md border px-3 py-2"
-/>
-{(preview || existingImage) && (
-    <img
-        src={preview ?? resolveImageUrl(existingImage!)}
-        alt=""
-        referrerPolicy="no-referrer"
-        className="mt-2 h-24 rounded-md"
-    />
-)}
-{errors.image && (
-    <p className="mt-1 text-sm text-red-500">{errors.image}</p>
-)}
+                    <label className="mt-4 mb-2 block text-sm font-semibold text-[#0F172A]">Image</label>
+                    <input
+                        type="file"
+                        accept="image/*"
+                        onChange={onFile}
+                        className="w-full rounded-xl border border-[#DCE4F0] bg-white px-3.5 py-2.5 text-sm text-[#0F172A]"
+                    />
+                    {(preview || existingImage) && (
+                        <img
+                            src={preview ?? resolveImageUrl(existingImage!)}
+                            alt=""
+                            referrerPolicy="no-referrer"
+                            className="mt-2 h-24 rounded-lg object-cover border border-[#DCE4F0]"
+                        />
+                    )}
+                    {errors.image && (
+                        <p className="mt-1 text-sm font-medium text-[#DC2626]">{errors.image}</p>
+                    )}
 
-                    <div>
+                    <div className="mt-6">
                         <button
                             type="submit"
                             disabled={processing}
-                            className="mt-4 rounded-md bg-black px-4 py-2 text-white"
+                            className="rounded-xl bg-[#004DEB] px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#0038B8] disabled:bg-[#E2E8F0] disabled:text-[#94A3B8]"
                         >
                             {processing ? 'Saving...' : editId ? 'Update Post' : 'Add Post'}
                         </button>
@@ -112,7 +112,7 @@ const onFile = (e: React.ChangeEvent<HTMLInputElement>) => {
                             <button
                                 type="button"
                                 onClick={clear}
-                                className="mt-4 ml-2 rounded-md border px-4 py-2"
+                                className="ml-3 rounded-xl border border-[#DCE4F0] bg-white px-5 py-2.5 text-sm font-semibold text-[#64748B] hover:bg-[#F8FAFC]"
                             >
                                 Cancel
                             </button>
@@ -124,7 +124,7 @@ const onFile = (e: React.ChangeEvent<HTMLInputElement>) => {
                     {posts.map((p) => (
                         <div
                             key={p.id}
-                            className="flex items-center justify-between rounded-md border p-3"
+                            className="flex items-center justify-between rounded-xl border border-[#DCE4F0] bg-white p-3.5 shadow-sm"
                         >
                             <div className="flex items-center gap-3">
                                 {p.image && (
@@ -132,19 +132,19 @@ const onFile = (e: React.ChangeEvent<HTMLInputElement>) => {
                                         src={resolveImageUrl(p.image)}
                                         alt=""
                                         referrerPolicy="no-referrer"
-                                        className="h-10 w-10 rounded object-cover"
+                                        className="h-10 w-10 rounded-lg object-cover"
                                     />
                                 )}
-                                <span>{p.title}</span>
+                                <span className="font-medium text-[#0F172A]">{p.title}</span>
                             </div>
-                            <div className="space-x-3">
-                                <button onClick={() => edit(p)}>Edit</button>
+                            <div className="space-x-3 text-sm font-semibold">
+                                <button onClick={() => edit(p)} className="text-[#004DEB] hover:underline">Edit</button>
                                 <button
                                     onClick={() =>
                                         confirm('Delete this post?') &&
                                         router.delete(`/dashboard/blog/${p.id}`)
                                     }
-                                    className="text-red-500"
+                                    className="text-[#DC2626] hover:underline"
                                 >
                                     Delete
                                 </button>
