@@ -25,7 +25,7 @@ const SiteGrowth = () => {
         </div>
 
         <div className="rounded-2xl overflow-hidden h-64 bg-slate-100">
-          <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=800" alt="Tech Team Collaborating" className="w-full h-full object-cover" />
+          <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=800" alt="Tech Team Collaborating on Software Project" loading="lazy" decoding="async" className="w-full h-full object-cover" />
         </div>
 
         <div className="flex flex-col justify-center">
@@ -40,7 +40,7 @@ const SiteGrowth = () => {
 
         {/* Row 2 */}
         <div className="rounded-2xl overflow-hidden h-64 bg-slate-100">
-          <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=800" alt="Software Development" className="w-full h-full object-cover" />
+          <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&q=80&w=800" alt="Software Engineering and MVP Development" loading="lazy" decoding="async" className="w-full h-full object-cover" />
         </div>
 
         <div className="flex flex-col justify-center">
@@ -54,7 +54,7 @@ const SiteGrowth = () => {
         </div>
 
         <div className="rounded-2xl overflow-hidden h-64 bg-slate-100">
-          <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&q=80&w=800" alt="Remote Work Presentation" className="w-full h-full object-cover" />
+          <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&q=80&w=800" alt="Remote Software Engineering Presentation" loading="lazy" decoding="async" className="w-full h-full object-cover" />
         </div>
 
         {/* Row 3 */}
@@ -69,7 +69,7 @@ const SiteGrowth = () => {
         </div>
 
         <div className="rounded-2xl overflow-hidden h-64 bg-slate-100">
-          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" alt="Consulting Meeting" className="w-full h-full object-cover" />
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" alt="Technology Consulting Strategy Meeting" loading="lazy" decoding="async" className="w-full h-full object-cover" />
         </div>
 
         <div className="flex flex-col justify-center">

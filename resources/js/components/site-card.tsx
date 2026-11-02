@@ -216,7 +216,7 @@ export default function SiteCard() {
                                 aria-hidden={set !== 0}
                             >
                                 <div className="pc-img">
-                                    <img src={c.image} alt={`${c.title} industry`} loading="lazy" />
+                                    <img src={c.image} alt={`${c.title} industry solutions`} loading="lazy" decoding="async" />
                                 </div>
                                 <div className="pc-info">
                                     <h3 className="pc-name">{c.title}</h3>

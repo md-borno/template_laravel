@@ -8,8 +8,12 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+
+// SEO Routes
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
 // Public Website Routes (Tracked automatically by TrackVisit middleware)
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -18,6 +22,10 @@ Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');
 Route::get('/career', [CareerController::class, 'index'])->name('career');
 Route::get('/careers', fn() => redirect('/career'));
+Route::permanentRedirect('/about', '/about-us');
+Route::permanentRedirect('/projects', '/portfolio');
+Route::permanentRedirect('/contact', '/contact-us');
+Route::redirect('/login', '/dynamic');
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('/blog/{post}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact-us');

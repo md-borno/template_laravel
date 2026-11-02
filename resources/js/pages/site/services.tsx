@@ -1,6 +1,7 @@
 import { Head, Link } from '@inertiajs/react';
 import SiteNavbar from '@/components/site-navbar';
 import SiteFooter from '@/components/site-footer';
+import Seo from '@/components/seo';
 import { ArrowRight, Code, Cpu, Globe, Layers, ShieldCheck, Sparkles } from 'lucide-react';
 
 const services = [
@@ -47,7 +48,10 @@ const services = [
 export default function Services() {
     return (
         <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A]">
-            <Head title="Services - Codlexa" />
+            <Seo
+                title="Software Engineering & Cloud Services | CODLEXA"
+                description="Discover our full-suite services: custom software engineering, modern web app development, UI/UX design, cloud architecture, and strategic IT consulting."
+            />
             <SiteNavbar />
             
             <main className="mx-auto max-w-7xl px-6 py-24 sm:py-32">

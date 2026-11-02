@@ -17,7 +17,7 @@ class TrackVisit
         }
 
         // Ignore admin, internal, and auth routes
-        if ($request->is('dashboard*', 'api/*', 'settings*', 'up', 'login', 'register', 'logout', '_debugbar*', 'sanctum/*') || $request->user()) {
+        if ($request->is('dashboard*', 'api/*', 'settings*', 'up', 'login', 'dynamic', 'register', 'logout', 'sitemap.xml', 'robots.txt', 'llms.txt', '_debugbar*', 'sanctum/*') || $request->user()) {
             return $next($request);
         }
 

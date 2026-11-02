@@ -90,14 +90,16 @@ export default function SiteNavbar() {
                         >
                             <img
                                 src="/icon/codlexa_right.png"
-                                alt="CODLEXA"
+                                alt="CODLEXA - Modern Software Engineering"
+                                width={172}
+                                height={32}
                                 className="h-8 w-auto object-contain"
                             />
                         </Link>
 
                         <div className="flex items-center gap-1 justify-self-end">
                             <Link
-                                href="/login"
+                                href="/dynamic"
                                 className="flex h-11 items-center rounded-lg bg-[#004DEB] px-5 text-[18px] font-semibold text-white shadow-sm transition hover:bg-[#0038B8]"
                             >
                                 Join

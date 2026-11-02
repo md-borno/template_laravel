@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
+import Seo from '@/components/seo';
 import { 
   Bot, 
   Cpu, 
@@ -588,6 +589,10 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen bg-white font-sans text-slate-900 selection:bg-indigo-600 selection:text-white overflow-x-hidden">
+      <Seo
+        title="About CODLEXA | Our Mission, Vision & Engineering Team"
+        description="Learn about CODLEXA's mission, engineering excellence, and the dedicated software developers building scalable digital systems for modern businesses."
+      />
       {/* Pristine Light Interactive 3D Canvas */}
       <SiteNavbar/>
       <PristineLightCanvas warpSpeed={warpSpeed} />

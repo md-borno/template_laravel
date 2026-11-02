@@ -1,2 +1,56 @@
+# Robots.txt for CODLEXA
+# Optimized for Google, Bing, and AI search engines (ChatGPT, Claude, Perplexity, Gemini)
+
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /dashboard
+Disallow: /dynamic
+Disallow: /login
+Disallow: /register
+Disallow: /settings
+Disallow: /user-messages
+Disallow: /forgot-password
+Disallow: /reset-password
+Disallow: /api/
+Disallow: /_boost/
+Disallow: /_inertia/
+
+# Explicitly Allow AI Crawlers
+User-agent: GPTBot
+Allow: /
+Disallow: /dashboard
+Disallow: /dynamic
+Disallow: /settings
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /dashboard
+Disallow: /dynamic
+Disallow: /settings
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /dashboard
+Disallow: /dynamic
+Disallow: /settings
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /dashboard
+Disallow: /dynamic
+Disallow: /settings
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+# Sitemap
+Sitemap: https://codlexa.com/sitemap.xml

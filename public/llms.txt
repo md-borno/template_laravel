@@ -1,0 +1,36 @@
+# CODLEXA
+
+> Transforming ambitious ideas into modern, scalable digital solutions.
+
+CODLEXA is a software engineering and technology consulting company specializing in custom software development, modern web applications, scalable cloud infrastructure, and user-centered digital experiences. We engineer resilient systems using industry-leading stacks including Laravel, React, TypeScript, Tailwind CSS, and cloud platforms.
+
+## Core Capabilities & Services
+
+- **Custom Software Engineering**: Full-cycle software development tailored to complex business requirements and high-concurrency environments.
+- **Modern Web Application Development**: Building interactive, reactive, and lightning-fast web applications using React, Inertia.js, and modern APIs.
+- **Cloud Infrastructure & DevOps**: Automated CI/CD pipelines, containerization, microservices architecture, and cloud management.
+- **UI/UX Design & Spatial Systems**: Clean, human-centered product design, design systems, and responsive interfaces.
+- **IT Consulting & Technology Modernization**: Migrating legacy platforms to modern architectures, improving performance, and securing data.
+
+## Key Links & Resources
+
+- [Home](https://codlexa.com/): Overview of our engineering philosophy, core competencies, and technology ecosystem.
+- [Services](https://codlexa.com/services): In-depth look at our engineering services, technology stack, and delivery methodology.
+- [Portfolio](https://codlexa.com/portfolio): Showcase of delivered client projects, enterprise web applications, and case studies.
+- [About Us](https://codlexa.com/about-us): Company story, mission, engineering values, and our multidisciplinary team.
+- [Career](https://codlexa.com/career): Open engineering, design, and product management opportunities at CODLEXA.
+- [Blog](https://codlexa.com/blog): Technical articles, architectural breakdowns, engineering insights, and tech perspectives.
+- [Contact Us](https://codlexa.com/contact-us): Get in touch with our solutions architects to discuss projects, partnerships, or consultations.
+
+## Technology Ecosystem
+
+- **Backend**: Laravel, PHP 8.3+, REST APIs, GraphQL, Redis, MySQL, PostgreSQL
+- **Frontend**: React 19, TypeScript, Inertia.js, Tailwind CSS v4, Vite
+- **Testing & Quality**: Pest, PHPUnit, Static Analysis (Larastan/PHPStan), Automated CI
+- **DevOps & Cloud**: Docker, Linux, Nginx/Apache, AWS/GCP, Google Drive API
+
+## Contact & Inquiries
+
+- **Website**: https://codlexa.com
+- **Inquiries**: https://codlexa.com/contact-us
+

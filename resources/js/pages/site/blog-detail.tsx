@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Head, Link } from '@inertiajs/react';
+import { Link } from '@inertiajs/react';
+import Seo from '@/components/seo';
 import SiteNavbar from '@/components/site-navbar';
 import SiteFooter from '@/components/site-footer';
 import { resolveImageUrl } from '@/lib/image-url';
@@ -74,14 +75,13 @@ export default function BlogDetail({ post, relatedPosts = [] }: BlogDetailProps)
 
     return (
         <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A] flex flex-col justify-between">
-            <Head title={`${post.title} - CODLEXA Blog`}>
-                <meta name="description" content={post.body.slice(0, 160)} />
-                <meta property="og:title" content={post.title} />
-                <meta property="og:description" content={post.body.slice(0, 160)} />
-                {post.image && <meta property="og:image" content={resolveImageUrl(post.image)} />}
-                <meta property="og:url" content={shareUrl} />
-                <meta property="og:type" content="article" />
-            </Head>
+            <Seo
+                title={`${post.title} | CODLEXA Blog`}
+                description={post.body ? post.body.slice(0, 155) : 'Read insights on software engineering and technology from CODLEXA.'}
+                canonical={shareUrl}
+                ogImage={post.image ? resolveImageUrl(post.image) : '/og-image.png'}
+                ogType="article"
+            />
 
             <SiteNavbar />
 

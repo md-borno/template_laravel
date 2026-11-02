@@ -1,5 +1,6 @@
-import { Head, useForm } from '@inertiajs/react';
+import { useForm } from '@inertiajs/react';
 import { FormEvent } from 'react';
+import Seo from '@/components/seo';
 import SiteNavbar from '@/components/site-navbar';
 import SiteFooter from '@/components/site-footer';
 
@@ -27,7 +28,10 @@ export default function ContactUs() {
 
     return (
         <div className="flex min-h-screen flex-col bg-[#F8FAFC]">
-            <Head title="Contact Us" />
+            <Seo
+                title="Contact CODLEXA | Start Your Next Software Project"
+                description="Connect with CODLEXA today. Discuss your software project requirements, request a consultation, or partner with our expert engineering team."
+            />
             <SiteNavbar />
 
             <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-16 sm:px-6 lg:px-8 pt-24">

@@ -1,4 +1,5 @@
-import { Head, Link } from '@inertiajs/react';
+import { Link } from '@inertiajs/react';
+import Seo from '@/components/seo';
 import { useState } from 'react';
 import SiteNavbar from '@/components/site-navbar';
 import SiteFooter from '@/components/site-footer';
@@ -79,7 +80,10 @@ export default function Career() {
 
     return (
         <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A]">
-            <Head title="Careers - Join CODLEXA" />
+            <Seo
+                title="Careers at CODLEXA | Join Our Software Engineering Team"
+                description="Build your career with CODLEXA. Explore open positions for software engineers, frontend developers, and product creators in a high-growth tech environment."
+            />
             <SiteNavbar />
 
             {/* Hero Section */}

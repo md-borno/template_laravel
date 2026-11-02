@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Head, Link } from '@inertiajs/react';
+import { Link } from '@inertiajs/react';
+import Seo from '@/components/seo';
 import SiteNavbar from '@/components/site-navbar';
 import SiteFooter from '@/components/site-footer';
 import { resolveImageUrl } from '@/lib/image-url';
@@ -29,7 +30,10 @@ export default function Blog({ posts }: { posts: Post[] }) {
 
     return (
         <div className="flex min-h-screen flex-col bg-[#F8FAFC]">
-            <Head title="Blog" />
+            <Seo
+                title="Tech Blog & Engineering Insights | CODLEXA"
+                description="Stay ahead with in-depth articles on software architecture, modern web development, engineering practices, and digital technology trends from CODLEXA."
+            />
             <SiteNavbar />
 
             <main className="mx-auto mt-24 w-full max-w-7xl flex-1 px-6 py-12 font-sans">

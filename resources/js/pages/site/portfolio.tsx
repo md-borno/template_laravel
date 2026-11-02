@@ -1,6 +1,7 @@
 import { Head, Link } from '@inertiajs/react';
 import SiteNavbar from '@/components/site-navbar';
 import SiteFooter from '@/components/site-footer';
+import Seo from '@/components/seo';
 import { ArrowUpRight } from 'lucide-react';
 
 const projects = [
@@ -37,7 +38,10 @@ const projects = [
 export default function Portfolio() {
     return (
         <div className="min-h-screen bg-[#F8FAFC] text-[#0F172A]">
-            <Head title="Portfolio - Codlexa" />
+            <Seo
+                title="Client Projects & Engineering Portfolio | CODLEXA"
+                description="Explore our featured case studies, enterprise applications, and modern digital products built with scalable architecture and precision engineering."
+            />
             <SiteNavbar />
 
             <main className="mx-auto max-w-7xl px-6 py-24 sm:py-32">

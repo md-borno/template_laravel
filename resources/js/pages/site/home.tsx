@@ -8,6 +8,7 @@ import SiteGrowth from '@/components/site-growth';
 import SiteFounded from '@/components/site-founded';
 import SiteProcess from '@/components/site-process';
 import FooterContent from '@/components/footer-content';
+import Seo from '@/components/seo';
 
 export default function Home({ homePage }: { homePage: { title: string } }) {
     const fakeItems = [
@@ -45,6 +46,10 @@ export default function Home({ homePage }: { homePage: { title: string } }) {
 
     return (
         <>
+            <Seo
+                title="CODLEXA | Modern Software & Digital Engineering Solutions"
+                description="Empowering businesses with custom software development, modern web applications, scalable cloud architecture, and high-performance engineering from CODLEXA."
+            />
             <SiteNavbar />
             <SiteBanner />
             <SiteGrowth/>

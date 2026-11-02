@@ -8,26 +8,27 @@ const COLUMNS: FooterColumn[] = [
     {
         title: 'Services',
         links: [
-            { label: 'Web development', href: '/services/web-development' },
-            { label: 'Custom software', href: '/services/custom-software' },
-            { label: 'Mobile apps', href: '/services/mobile-apps' },
-            { label: 'UI/UX design', href: '/services/design' },
+            { label: 'All Services', href: '/services' },
+            { label: 'Web Development', href: '/services' },
+            { label: 'Custom Software', href: '/services' },
+            { label: 'Cloud Architecture', href: '/services' },
         ],
     },
     {
         title: 'Company',
         links: [
-            { label: 'About', href: '/about' },
-            { label: 'Projects', href: '/projects' },
-            { label: 'Blog', href: '/blog' },
-            { label: 'Contact', href: '/contact' },
+            { label: 'About Us', href: '/about-us' },
+            { label: 'Portfolio & Projects', href: '/portfolio' },
+            { label: 'Careers', href: '/career' },
+            { label: 'Blog & Insights', href: '/blog' },
+            { label: 'Contact Us', href: '/contact-us' },
         ],
     },
     {
         title: 'Connect',
         links: [
-            { label: 'GitHub', href: 'https://github.com/', external: true },
-            { label: 'LinkedIn', href: 'https://linkedin.com/', external: true },
+            { label: 'GitHub', href: 'https://github.com/codlexa', external: true },
+            { label: 'LinkedIn', href: 'https://linkedin.com/company/codlexa', external: true },
             { label: 'Facebook', href: 'https://facebook.com/', external: true },
         ],
     },
