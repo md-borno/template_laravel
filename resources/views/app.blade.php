@@ -44,7 +44,7 @@
         </style>
 
         <link rel="icon" href="/favicon.ico" sizes="any">
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="apple-touch-icon" href="/icon/CodLexa.png">
 
         @php
             $appName = config('app.name', 'CODLEXA');
@@ -73,7 +73,7 @@
             // Default SEO tags (Home)
             $pageTitle = 'CODLEXA | Modern Software & Digital Engineering Solutions';
             $pageDescription = 'Empowering businesses with custom software development, modern web applications, scalable cloud architecture, and high-performance engineering from CODLEXA.';
-            $pageImage = asset('og-image.png');
+            $pageImage = asset('icon/CodLexa_icon.png');
             $pageType = 'website';
             $breadcrumbs = [
                 ['name' => 'Home', 'url' => $baseUrl],
@@ -279,6 +279,8 @@
         <meta property="og:description" content="{{ $pageDescription }}">
         <meta property="og:image" content="{{ $pageImage }}">
         <meta property="og:image:secure_url" content="{{ $pageImage }}">
+        <meta property="og:image" content="{{ asset('icon/CodLexa.png') }}">
+        <meta property="og:image:secure_url" content="{{ asset('icon/CodLexa.png') }}">
         <meta property="og:image:type" content="image/png">
         <meta property="og:image:width" content="1200">
         <meta property="og:image:height" content="630">

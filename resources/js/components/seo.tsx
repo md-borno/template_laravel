@@ -14,7 +14,7 @@ export default function Seo({
     title,
     description,
     canonical,
-    ogImage = '/og-image.png',
+    ogImage = '/icon/CodLexa_icon.png',
     ogType = 'website',
     noindex = false,
     schema,
