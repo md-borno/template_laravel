@@ -7,6 +7,7 @@
     <meta name="robots" content="noindex, nofollow">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    @include('partials.google-tag')
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -146,4 +147,3 @@
     </main>
 </body>
 </html>
-

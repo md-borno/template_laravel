@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Blog</title>
+    @include('partials.google-tag')
     @vite('resources/css/app.css')
 </head>
 <body class="mx-auto max-w-2xl p-6">
