@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Link } from '@inertiajs/react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import Seo from '@/components/seo';
 import SiteNavbar from '@/components/site-navbar';
 import SiteFooter from '@/components/site-footer';
@@ -54,7 +56,10 @@ export default function Blog({ posts }: { posts: Post[] }) {
                         {featuredPost && (
                             <div className="lg:col-span-7 xl:col-span-8">
                                 <article className="group relative rounded-3xl border border-[#DCE4F0] bg-white p-6 shadow-xs transition-all duration-300 hover:border-[#00D0F4] hover:shadow-xl">
-                                    <Link href={`/blog/${featuredPost.id}`} className="block">
+                                    <Link
+                                        href={`/blog/${featuredPost.id}`}
+                                        className="group/image block"
+                                    >
                                         <div className="overflow-hidden rounded-2xl border border-[#DCE4F0] bg-white mb-6 aspect-[16/10] md:aspect-video relative">
                                             {featuredPost.image ? (
                                                 <img
@@ -74,11 +79,13 @@ export default function Blog({ posts }: { posts: Post[] }) {
                                         <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-4 group-hover:text-[#004DEB] transition-colors">
                                             {featuredPost.title}
                                         </h2>
-                                        
-                                        <p className="text-base text-[#64748B] leading-relaxed line-clamp-3 mb-6">
-                                            {featuredPost.body}
-                                        </p>
                                     </Link>
+
+                                    <div className="mb-6 line-clamp-3 break-words text-base leading-relaxed text-[#64748B] [&_a]:font-medium [&_a]:text-[#004DEB] [&_a]:underline [&_a]:underline-offset-2 [&_blockquote]:border-l-2 [&_blockquote]:border-[#00D0F4] [&_blockquote]:pl-3 [&_h1]:inline [&_h1]:font-bold [&_h2]:inline [&_h2]:font-bold [&_h3]:inline [&_h3]:font-bold [&_li]:inline [&_li]:after:content-['_'] [&_ol]:inline [&_p]:inline [&_strong]:font-bold [&_ul]:inline">
+                                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                            {featuredPost.body}
+                                        </ReactMarkdown>
+                                    </div>
 
                                     <div className="flex items-center justify-between flex-wrap gap-4 pt-4 border-t border-[#DCE4F0] text-sm text-[#64748B]">
                                         <div className="flex items-center gap-3">
@@ -221,8 +228,10 @@ export default function Blog({ posts }: { posts: Post[] }) {
                                     {selectedPost.title}
                                 </h2>
                                 
-                                <div className="prose prose-slate max-w-none text-slate-600 leading-relaxed whitespace-pre-wrap">
-                                    {selectedPost.body}
+                                <div className="break-words text-slate-600 [&_a]:font-medium [&_a]:text-[#004DEB] [&_a]:underline [&_a]:underline-offset-2 [&_blockquote]:my-5 [&_blockquote]:border-l-4 [&_blockquote]:border-[#00D0F4] [&_blockquote]:pl-4 [&_h1]:mb-4 [&_h1]:mt-8 [&_h1]:text-2xl [&_h1]:font-bold [&_h2]:mb-3 [&_h2]:mt-6 [&_h2]:text-xl [&_h2]:font-bold [&_li]:my-1 [&_ol]:my-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:mb-4 [&_p]:leading-7 [&_ul]:my-4 [&_ul]:list-disc [&_ul]:pl-6">
+                                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                        {selectedPost.body}
+                                    </ReactMarkdown>
                                 </div>
                             </div>
                         </div>

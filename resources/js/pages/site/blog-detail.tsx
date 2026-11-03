@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Link } from '@inertiajs/react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import Seo from '@/components/seo';
 import SiteNavbar from '@/components/site-navbar';
 import SiteFooter from '@/components/site-footer';
@@ -177,7 +179,31 @@ export default function BlogDetail({ post, relatedPosts = [] }: BlogDetailProps)
                     </div>
                 )}
 
-                
+                <article className="mb-16">
+                    <div className="break-words text-base text-[#334155] [&_blockquote]:my-6 [&_blockquote]:border-l-4 [&_blockquote]:border-[#00D0F4] [&_blockquote]:pl-4 [&_blockquote]:italic [&_h1]:mb-5 [&_h1]:mt-10 [&_h1]:text-3xl [&_h1]:font-extrabold [&_h1]:text-[#0F172A] [&_h2]:mb-4 [&_h2]:mt-8 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-[#0F172A] [&_h3]:mb-3 [&_h3]:mt-6 [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-[#0F172A] [&_li]:my-1 [&_ol]:my-5 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:mb-6 [&_p]:leading-8 [&_pre]:my-6 [&_pre]:overflow-x-auto [&_pre]:rounded-xl [&_pre]:bg-slate-900 [&_pre]:p-4 [&_pre]:text-sm [&_pre]:text-white [&_ul]:my-5 [&_ul]:list-disc [&_ul]:pl-6">
+                        <ReactMarkdown
+                            remarkPlugins={[remarkGfm]}
+                            components={{
+                                a: ({ href, children }) => {
+                                    const external = href?.startsWith('http');
+
+                                    return (
+                                        <a
+                                            href={href}
+                                            target={external ? '_blank' : undefined}
+                                            rel={external ? 'noopener noreferrer' : undefined}
+                                            className="font-semibold text-[#004DEB] underline decoration-[#00D0F4] underline-offset-4 hover:text-[#0038B8]"
+                                        >
+                                            {children}
+                                        </a>
+                                    );
+                                },
+                            }}
+                        >
+                            {post.body}
+                        </ReactMarkdown>
+                    </div>
+                </article>
 
                 {/* Related Articles */}
                 {relatedPosts.length > 0 && (

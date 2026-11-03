@@ -14,7 +14,7 @@ export default function BlogPage({ posts }: { posts: Post[] }) {
 const [existingImage, setExistingImage] = useState<string | null>(null);
 const [preview, setPreview] = useState<string | null>(null);
 
-const { data, setData, post, reset, processing, errors } = useForm<{
+const { data, setData, post, reset, processing, errors, transform } = useForm<{
     title: string;
     body: string;
     image: File | null;
@@ -34,6 +34,10 @@ const clear = () => {
 const submit = (e: React.FormEvent) => {
     e.preventDefault();
     const url = editId ? `/dashboard/blog/${editId}` : '/dashboard/blog';
+    transform((formData) => ({
+        ...formData,
+        ...(editId ? { _method: 'put' } : {}),
+    }));
     post(url, { forceFormData: true, onSuccess: clear });
 };
 
@@ -69,9 +73,12 @@ const onFile = (e: React.ChangeEvent<HTMLInputElement>) => {
                         <p className="mt-1 text-sm font-medium text-[#DC2626]">{errors.title}</p>
                     )}
 
-                    <label className="mt-4 mb-2 block text-sm font-semibold text-[#0F172A]">Body</label>
+                    <label className="mt-4 mb-2 block text-sm font-semibold text-[#0F172A]">Body (Markdown supported)</label>
+                    <p className="mb-2 text-xs leading-relaxed text-[#64748B]">
+                        Use **bold**, *italic*, # headings, - lists, [link text](https://example.com), or paste a URL to make it clickable.
+                    </p>
                     <textarea
-                        rows={6}
+                        rows={12}
                         value={data.body}
                         onChange={(e) => setData('body', e.target.value)}
                         className="w-full rounded-xl border border-[#DCE4F0] bg-white px-3.5 py-2.5 text-sm text-[#0F172A] focus:border-[#004DEB] focus:outline-none focus:ring-2 focus:ring-[#004DEB]/20"

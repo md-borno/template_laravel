@@ -9,7 +9,12 @@ import SettingsLayout from '@/layouts/settings/layout';
 const appName = import.meta.env.VITE_APP_NAME || 'CODLEXA';
 
 void createInertiaApp({
-    title: (title) => (title ? (title.includes(appName) ? title : `${title} | ${appName}`) : appName),
+    title: (title) =>
+        title
+            ? title.includes(appName)
+                ? title
+                : `${title} | ${appName}`
+            : appName,
     layout: (name) => {
         switch (true) {
             case name === 'welcome':
@@ -38,5 +43,5 @@ void createInertiaApp({
     },
 });
 
-// This will set light / dark mode on load...
+// Keep the document in light mode, regardless of browser or saved preferences.
 initializeTheme();

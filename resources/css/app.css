@@ -78,6 +78,8 @@
 }
 
 :root {
+    color-scheme: light;
+
     --background: #F8FAFC;
     --foreground: #0F172A;
     --card: #FFFFFF;
@@ -111,41 +113,6 @@
     --sidebar-accent-foreground: #004DEB;
     --sidebar-border: #DCE4F0;
     --sidebar-ring: #004DEB;
-}
-
-.dark {
-    --background: #0F172A;
-    --foreground: #F8FAFC;
-    --card: #1E293B;
-    --card-foreground: #F8FAFC;
-    --popover: #1E293B;
-    --popover-foreground: #F8FAFC;
-    --primary: #00D0F4;
-    --primary-foreground: #0F172A;
-    --secondary: #004DEB;
-    --secondary-foreground: #FFFFFF;
-    --muted: #1E293B;
-    --muted-foreground: #94A3B8;
-    --accent: #1E293B;
-    --accent-foreground: #00D0F4;
-    --destructive: #DC2626;
-    --destructive-foreground: #FFFFFF;
-    --border: #334155;
-    --input: #334155;
-    --ring: #00D0F4;
-    --chart-1: #00D0F4;
-    --chart-2: #007FF5;
-    --chart-3: #EAB308;
-    --chart-4: #004DEB;
-    --chart-5: #38BDF8;
-    --sidebar: #0F172A;
-    --sidebar-foreground: #F8FAFC;
-    --sidebar-primary: #00D0F4;
-    --sidebar-primary-foreground: #0F172A;
-    --sidebar-accent: #1E293B;
-    --sidebar-accent-foreground: #00D0F4;
-    --sidebar-border: #334155;
-    --sidebar-ring: #00D0F4;
 }
 
 @layer base {
