@@ -1,0 +1,1 @@
+import{a as e,t}from"./jsx-runtime-CNxzv174.js";import{i as n}from"./input-hRcmyUYH.js";var r=t();function i({className:t=``,children:i,...a}){return(0,r.jsx)(e,{className:n(`text-[#004DEB] underline decoration-[#004DEB]/40 underline-offset-4 transition-colors duration-200 ease-out hover:text-[#0038B8] hover:decoration-current`,t),...a,children:i})}export{i as t};
