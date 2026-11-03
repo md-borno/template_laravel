@@ -7,6 +7,7 @@ use Google\Service\Drive;
 use Google\Service\Drive\DriveFile;
 use Google\Service\Drive\Permission;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Cache;
 use RuntimeException;
 
 class GoogleDriveService
@@ -19,28 +20,49 @@ class GoogleDriveService
             return $this->drive;
         }
 
-        // $client = new Client();
-        // $client->setClientId(env('GOOGLE_DRIVE_CLIENT_ID'));
-        // $client->setClientSecret(env('GOOGLE_DRIVE_CLIENT_SECRET'));
-        $client = new Client();
-$client->setClientId(config('services.google_drive.client_id'));
-$client->setClientSecret(config('services.google_drive.client_secret'));
+        $clientId     = config('services.google_drive.client_id');
+        $clientSecret = config('services.google_drive.client_secret');
+        $refreshToken = config('services.google_drive.refresh_token');
 
-$token = $client->fetchAccessTokenWithRefreshToken(config('services.google_drive.refresh_token'));
-
-        $token = $client->fetchAccessTokenWithRefreshToken(env('GOOGLE_DRIVE_REFRESH_TOKEN'));
-        if (isset($token['error'])) {
-            throw new RuntimeException('Google Drive auth failed: ' . ($token['error_description'] ?? $token['error']));
+        if (!$clientId || !$clientSecret || !$refreshToken) {
+            throw new RuntimeException(
+                'Google Drive credentials are missing. Check config/services.php and run `php artisan config:clear`.'
+            );
         }
+
+        $client = new Client();
+        $client->setClientId($clientId);
+        $client->setClientSecret($clientSecret);
+
+        // Cache the access token for 55 minutes to avoid hitting OAuth limits
+        $token = Cache::remember('google_drive_access_token', 3300, function () use ($client, $refreshToken) {
+            $fetched = $client->fetchAccessTokenWithRefreshToken($refreshToken);
+
+            if (isset($fetched['error'])) {
+                throw new RuntimeException(
+                    sprintf(
+                        'Google Drive auth failed [%s]: %s',
+                        $fetched['error'],
+                        $fetched['error_description'] ?? 'Bad Request'
+                    )
+                );
+            }
+
+            return $fetched;
+        });
+
+        $client->setAccessToken($token);
 
         return $this->drive = new Drive($client);
     }
 
     public function upload(UploadedFile $file): string
     {
+        $folderId = config('services.google_drive.folder_id');
+
         $meta = new DriveFile([
             'name'    => time() . '_' . $file->getClientOriginalName(),
-            'parents' => [config('services.google_drive.folder_id')],
+            'parents' => $folderId ? [$folderId] : [],
         ]);
 
         $created = $this->drive()->files->create($meta, [

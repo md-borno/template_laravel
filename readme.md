@@ -103,7 +103,7 @@ npm run dev           # terminal 2: Vite frontend
 | URL                                                               | What it is                                |
 | ----------------------------------------------------------------- | ----------------------------------------- |
 | `/`                                                               | Public home page (Blade view)             |
-| `/register`, `/login`                                             | Create account / sign in                  |
+| `/register`, `/dynamic`                                             | Create account / sign in                  |
 | `/dashboard`                                                      | Dashboard (login required)                |
 | `/dashboard/home-page`                                            | Edit the home page title (login required) |
 | `/settings/profile`, `/settings/security`, `/settings/appearance` | Account settings                          |

@@ -5,7 +5,7 @@ User-agent: *
 Allow: /
 Disallow: /dashboard
 Disallow: /dynamic
-Disallow: /login
+Disallow: /dynamic
 Disallow: /register
 Disallow: /settings
 Disallow: /user-messages
