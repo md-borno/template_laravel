@@ -1,0 +1,1 @@
+function e(e){let t=e.match(/drive\.google\.com\/file\/d\/([\w-]+)/)||e.match(/drive\.google\.com\/(?:open|uc)\?(?:.*&)?id=([\w-]+)/);return t?`https://drive.google.com/thumbnail?id=${t[1]}&sz=w1600`:/^https?:\/\//.test(e)?e:`/${e}`}export{e as t};
