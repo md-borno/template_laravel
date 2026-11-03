@@ -25,7 +25,6 @@ Route::get('/careers', fn() => redirect('/career'));
 Route::permanentRedirect('/about', '/about-us');
 Route::permanentRedirect('/projects', '/portfolio');
 Route::permanentRedirect('/contact', '/contact-us');
-Route::redirect('/dynamic', '/dynamic');
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('/blog/{post}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('/contact-us', [ContactUsController::class, 'index'])->name('contact-us');

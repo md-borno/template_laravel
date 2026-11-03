@@ -99,10 +99,10 @@ export default function SiteNavbar() {
 
                         <div className="flex items-center gap-1 justify-self-end">
                             <Link
-                                href="/dynamic"
+                                href="/contact-us"
                                 className="flex h-11 items-center rounded-lg bg-[#004DEB] px-5 text-[18px] font-semibold text-white shadow-sm transition hover:bg-[#0038B8]"
                             >
-                                Join
+                                Contact Us
                             </Link>
                         </div>
                     </div>

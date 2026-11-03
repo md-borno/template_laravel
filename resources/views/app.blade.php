@@ -55,7 +55,7 @@
 
             // Determine if current page is private / auth (should be noindexed)
             $isPrivate = in_array($component, [
-                'auth/dynamic',
+                'auth/login',
                 'auth/register',
                 'auth/forgot-password',
                 'auth/reset-password',
